@@ -3,15 +3,15 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    compileSdkVersion rootProject.ext.Android['compileSdkVersion']
+    buildToolsVersion rootProject.ext.Android['buildToolsVersion']
 
     defaultConfig {
-        applicationId "com.looptry.wanandroid"
-        minSdkVersion 21
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        applicationId rootProject.ext.Android['applicationId']
+        minSdkVersion rootProject.ext.Android['minSdkVersion']
+        targetSdkVersion rootProject.ext.Android['targetSdkVersion']
+        versionCode rootProject.ext.Android['versionCode']
+        versionName rootProject.ext.Android['versionName']
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

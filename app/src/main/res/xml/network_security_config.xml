@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config xmlns:tools="http://schemas.android.com/tools">
+    <!--Android 8.0 不允许明文传输-->
+    <base-config
+        cleartextTrafficPermitted="true"
+        tools:targetApi="n" />
+</network-security-config>

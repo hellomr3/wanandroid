@@ -10,6 +10,53 @@ ext {
     ]
 
     Version = [
-            kotlinVersion: '1.4.10'
+            kotlinVersion   : '1.4.10',
+            hiltVersion     : '2.28.3-alpha',
+            hiltJetpack     : '1.0.0-alpha02',
+            materialVersion : '1.2.1',
+            lifecycleVersion: '2.2.0',
+            okhttp3         : "4.9.0",
+            retrofit2       : "2.9.0"
     ]
+
+    AndroidxLibs = [
+            "core-ktx"    : "androidx.core:core-ktx:1.3.1",
+            "activity-ktx": "androidx.activity:activity-ktx:1.2.0-alpha08",
+            "fragment-ktx": "androidx.fragment:fragment-ktx:1.3.0-alpha08",
+            "appcompat"   : 'androidx.appcompat:appcompat:1.2.0',
+    ]
+
+    AndroidxDeps = AndroidxLibs.values()
+
+    ViewLibs = [
+            "material"        : "com.google.android.material:material:${Version['materialVersion']}",
+            "constraintlayout": "androidx.constraintlayout:constraintlayout:2.0.1",
+    ]
+
+    ViewDeps = ViewLibs.values()
+
+    LifecycleLibs = [
+            "lifecycle-runtime"      : "androidx.lifecycle:lifecycle-runtime:${Version['lifecycleVersion']}",
+            "lifecycle-extensions"   : "androidx.lifecycle:lifecycle-extensions:${Version['lifecycleVersion']}",
+            "lifecycle-viewmodel-ktx": "androidx.lifecycle:lifecycle-viewmodel-ktx:${Version['lifecycleVersion']}",
+            "lifecycle-livedata-ktx" : "androidx.lifecycle:lifecycle-livedata-ktx:${Version['lifecycleVersion']}",
+    ]
+    LifecycleDeps = LifecycleLibs.values()
+
+    HiltLibs = [
+            "hilt-android"            : "com.google.dagger:hilt-android:${Version['hiltVersion']}",
+            "hilt-android-compiler"   : "com.google.dagger:hilt-android-compiler:${Version['hiltVersion']}",
+            "hilt-lifecycle-viewmodel": "androidx.hilt:hilt-lifecycle-viewmodel:${Version['hiltJetpack']}",
+            "hilt-compiler"           : "androidx.hilt:hilt-compiler:${Version['hiltJetpack']}",
+    ]
+
+    NetLibs = [
+            "okhttp3"                    : "com.squareup.okhttp3:okhttp:${Version['okhttp3']}",
+            "okhttp3-logging-interceptor": "com.squareup.okhttp3:logging-interceptor:${Version['okhttp3']}",
+            "retrofit2"                  : "com.squareup.retrofit2:retrofit:${Version['retrofit2']}",
+            "retrofit2-converter-gson"   : "com.squareup.retrofit2:converter-gson:${Version['retrofit2']}",
+            "retrofit2-converter-scalars": "com.squareup.retrofit2:converter-scalars:${Version['retrofit2']}",
+            "gson"                       : "com.google.code.gson:gson:2.8.6",
+    ]
+    NetDeps = NetLibs.values()
 }

@@ -1,7 +1,7 @@
 package com.looptry.wanandroid.app
 
-import android.app.Application
 import com.blankj.utilcode.util.Utils
+import com.looptry.architecture.application.BasicApplication
 import dagger.hilt.android.HiltAndroidApp
 
 /**
@@ -12,7 +12,7 @@ import dagger.hilt.android.HiltAndroidApp
  * Modify Date:
  */
 @HiltAndroidApp
-class App : Application() {
+class App : BasicApplication() {
     override fun onCreate() {
         super.onCreate()
         //初始化Utils

@@ -1,0 +1,9 @@
+syntax = "proto3";
+package com.looptry.protobuf.entity;
+
+option java_outer_classname = "message";
+
+message UserInfo {
+    string userName = 1;
+
+}

@@ -7,7 +7,6 @@ import com.looptry.architecture.page.DataBindingConfig
 import com.looptry.wanandroid.BR
 import com.looptry.wanandroid.R
 import com.looptry.wanandroid.adapter.MainPageAdapter
-import com.looptry.wanandroid.ext.showToast
 import com.looptry.wanandroid.model.enums.MainPage
 import com.looptry.wanandroid.widget.activity.BaseActivity
 import dagger.hilt.android.AndroidEntryPoint

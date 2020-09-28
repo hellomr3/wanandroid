@@ -40,6 +40,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation project(":protobuf")
     //art
     implementation "com.github.hellomr3:Architecture:1.0.8"
     implementation 'com.blankj:utilcodex:1.29.0'

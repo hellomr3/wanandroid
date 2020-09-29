@@ -1,15 +1,17 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.google.protobuf'
-
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+
+    compileSdkVersion rootProject.ext.Android['compileSdkVersion']
+    buildToolsVersion rootProject.ext.Android['buildToolsVersion']
 
     defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion rootProject.ext.Android['minSdkVersion']
+        targetSdkVersion rootProject.ext.Android['targetSdkVersion']
+        versionCode rootProject.ext.Android['versionCode']
+        versionName rootProject.ext.Android['versionName']
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -36,7 +38,7 @@ android {
 
     protobuf {
         protoc {
-            artifact = 'com.google.protobuf:protoc:3.8.0'
+            artifact = 'com.google.protobuf:protoc:${rootProject.ext.Version[\'protobuf\']}'
         }
         generateProtoTasks {
             all().each { task ->
@@ -54,12 +56,11 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation 'androidx.core:core-ktx:1.3.1'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-    implementation 'com.google.protobuf:protobuf-javalite:3.8.0'
+    api "com.google.protobuf:protobuf-javalite:${rootProject.ext.Version['protobuf']}"
+    api "com.google.protobuf:protobuf-java-util:${rootProject.ext.Version['protobuf']}"
 }

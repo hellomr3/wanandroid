@@ -16,7 +16,8 @@ ext {
             materialVersion : '1.2.1',
             lifecycleVersion: '2.2.0',
             okhttp3         : "4.9.0",
-            retrofit2       : "2.9.0"
+            retrofit2       : "2.9.0",
+            protobuf        : "3.13.0"
     ]
 
     AndroidxLibs = [

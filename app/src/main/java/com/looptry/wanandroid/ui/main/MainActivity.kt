@@ -1,5 +1,6 @@
 package com.looptry.wanandroid.ui.main
 
+import android.net.Uri
 import android.view.MenuItem
 import androidx.activity.viewModels
 import com.google.android.material.bottomnavigation.BottomNavigationView

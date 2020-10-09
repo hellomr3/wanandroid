@@ -3,8 +3,8 @@
 
 package com.looptry.protobuf.entity;
 
-public final class message {
-  private message() {}
+public final class B {
+  private B() {}
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistryLite registry) {
   }
@@ -82,73 +82,73 @@ public final class message {
       
     }
 
-    public static com.looptry.protobuf.entity.message.UserInfo parseFrom(
+    public static com.looptry.protobuf.entity.B.UserInfo parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data);
     }
-    public static com.looptry.protobuf.entity.message.UserInfo parseFrom(
+    public static com.looptry.protobuf.entity.B.UserInfo parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data, extensionRegistry);
     }
-    public static com.looptry.protobuf.entity.message.UserInfo parseFrom(
+    public static com.looptry.protobuf.entity.B.UserInfo parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data);
     }
-    public static com.looptry.protobuf.entity.message.UserInfo parseFrom(
+    public static com.looptry.protobuf.entity.B.UserInfo parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data, extensionRegistry);
     }
-    public static com.looptry.protobuf.entity.message.UserInfo parseFrom(byte[] data)
+    public static com.looptry.protobuf.entity.B.UserInfo parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data);
     }
-    public static com.looptry.protobuf.entity.message.UserInfo parseFrom(
+    public static com.looptry.protobuf.entity.B.UserInfo parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, data, extensionRegistry);
     }
-    public static com.looptry.protobuf.entity.message.UserInfo parseFrom(java.io.InputStream input)
+    public static com.looptry.protobuf.entity.B.UserInfo parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input);
     }
-    public static com.looptry.protobuf.entity.message.UserInfo parseFrom(
+    public static com.looptry.protobuf.entity.B.UserInfo parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input, extensionRegistry);
     }
-    public static com.looptry.protobuf.entity.message.UserInfo parseDelimitedFrom(java.io.InputStream input)
+    public static com.looptry.protobuf.entity.B.UserInfo parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return parseDelimitedFrom(DEFAULT_INSTANCE, input);
     }
-    public static com.looptry.protobuf.entity.message.UserInfo parseDelimitedFrom(
+    public static com.looptry.protobuf.entity.B.UserInfo parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return parseDelimitedFrom(DEFAULT_INSTANCE, input, extensionRegistry);
     }
-    public static com.looptry.protobuf.entity.message.UserInfo parseFrom(
+    public static com.looptry.protobuf.entity.B.UserInfo parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageLite.parseFrom(
           DEFAULT_INSTANCE, input);
     }
-    public static com.looptry.protobuf.entity.message.UserInfo parseFrom(
+    public static com.looptry.protobuf.entity.B.UserInfo parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -159,7 +159,7 @@ public final class message {
     public static Builder newBuilder() {
       return (Builder) DEFAULT_INSTANCE.createBuilder();
     }
-    public static Builder newBuilder(com.looptry.protobuf.entity.message.UserInfo prototype) {
+    public static Builder newBuilder(com.looptry.protobuf.entity.B.UserInfo prototype) {
       return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
     }
 
@@ -168,10 +168,10 @@ public final class message {
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageLite.Builder<
-          com.looptry.protobuf.entity.message.UserInfo, Builder> implements
+          com.looptry.protobuf.entity.B.UserInfo, Builder> implements
         // @@protoc_insertion_point(builder_implements:com.looptry.protobuf.entity.UserInfo)
-        com.looptry.protobuf.entity.message.UserInfoOrBuilder {
-      // Construct using com.looptry.protobuf.entity.message.UserInfo.newBuilder()
+        com.looptry.protobuf.entity.B.UserInfoOrBuilder {
+      // Construct using com.looptry.protobuf.entity.B.UserInfo.newBuilder()
       private Builder() {
         super(DEFAULT_INSTANCE);
       }
@@ -235,7 +235,7 @@ public final class message {
         java.lang.Object arg0, java.lang.Object arg1) {
       switch (method) {
         case NEW_MUTABLE_INSTANCE: {
-          return new com.looptry.protobuf.entity.message.UserInfo();
+          return new com.looptry.protobuf.entity.B.UserInfo();
         }
         case NEW_BUILDER: {
           return new Builder();
@@ -253,13 +253,13 @@ public final class message {
           return DEFAULT_INSTANCE;
         }
         case GET_PARSER: {
-          com.google.protobuf.Parser<com.looptry.protobuf.entity.message.UserInfo> parser = PARSER;
+          com.google.protobuf.Parser<com.looptry.protobuf.entity.B.UserInfo> parser = PARSER;
           if (parser == null) {
-            synchronized (com.looptry.protobuf.entity.message.UserInfo.class) {
+            synchronized (com.looptry.protobuf.entity.B.UserInfo.class) {
               parser = PARSER;
               if (parser == null) {
                 parser =
-                    new DefaultInstanceBasedParser<com.looptry.protobuf.entity.message.UserInfo>(
+                    new DefaultInstanceBasedParser<com.looptry.protobuf.entity.B.UserInfo>(
                         DEFAULT_INSTANCE);
                 PARSER = parser;
               }
@@ -279,7 +279,7 @@ public final class message {
 
 
     // @@protoc_insertion_point(class_scope:com.looptry.protobuf.entity.UserInfo)
-    private static final com.looptry.protobuf.entity.message.UserInfo DEFAULT_INSTANCE;
+    private static final com.looptry.protobuf.entity.B.UserInfo DEFAULT_INSTANCE;
     static {
       UserInfo defaultInstance = new UserInfo();
       // New instances are implicitly immutable so no need to make
@@ -289,7 +289,7 @@ public final class message {
         UserInfo.class, defaultInstance);
     }
 
-    public static com.looptry.protobuf.entity.message.UserInfo getDefaultInstance() {
+    public static com.looptry.protobuf.entity.B.UserInfo getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 

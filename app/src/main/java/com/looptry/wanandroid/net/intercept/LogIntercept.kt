@@ -17,7 +17,7 @@ class LogIntercept {
         private const val TAG = "Http"
         fun getHttpLogInterceptor() =
             HttpLoggingInterceptor {
-                LogUtils.eTag(TAG, it)
+                Log.i(TAG, it)
             }.apply {
                 setLevel(HttpLoggingInterceptor.Level.BODY)
             }

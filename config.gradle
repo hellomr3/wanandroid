@@ -10,14 +10,17 @@ ext {
     ]
 
     Version = [
-            kotlinVersion   : '1.4.10',
-            hiltVersion     : '2.28.3-alpha',
-            hiltJetpack     : '1.0.0-alpha02',
-            materialVersion : '1.2.1',
-            lifecycleVersion: '2.2.0',
-            okhttp3         : "4.9.0",
-            retrofit2       : "2.9.0",
-            protobuf        : "3.13.0"
+            kotlinVersion           : '1.4.10',
+            hiltVersion             : '2.28.3-alpha',
+            hiltJetpack             : '1.0.0-alpha02',
+            materialVersion         : '1.2.1',
+            lifecycleVersion        : '2.2.0',
+            okhttp3                 : "4.9.0",
+            retrofit2               : "2.9.0",
+            protobuf                : "3.13.0",
+            glide                   : "4.11.0",
+            smartRefresh            : '2.0.1',
+            bindingcollectionadapter: '4.0.0',
     ]
 
     AndroidxLibs = [
@@ -30,8 +33,15 @@ ext {
     AndroidxDeps = AndroidxLibs.values()
 
     ViewLibs = [
-            "material"        : "com.google.android.material:material:${Version['materialVersion']}",
-            "constraintlayout": "androidx.constraintlayout:constraintlayout:2.0.1",
+            "material"                             : "com.google.android.material:material:${Version['materialVersion']}",
+            "constraintlayout"                     : "androidx.constraintlayout:constraintlayout:2.0.1",
+            "banner"                               : 'com.youth.banner:banner:2.1.0',
+            "smartRefresh"                         : "com.scwang.smart:refresh-layout-kernel:$Version.smartRefresh",
+            "smartRefresh-header"                  : "com.scwang.smart:refresh-header-material:$Version.smartRefresh",
+            "smartRefresh-footer"                  : "com.scwang.smart:refresh-footer-classics:$Version.smartRefresh",
+            "bindingcollectionadapter"             : "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:$Version.bindingcollectionadapter",
+            "bindingcollectionadapter-recyclerview": "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:$Version.bindingcollectionadapter",
+            "bindingcollectionadapter-viewpager2"  : "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-viewpager2:$Version.bindingcollectionadapter",
     ]
 
     ViewDeps = ViewLibs.values()
@@ -49,6 +59,11 @@ ext {
             "hilt-android-compiler"   : "com.google.dagger:hilt-android-compiler:${Version['hiltVersion']}",
             "hilt-lifecycle-viewmodel": "androidx.hilt:hilt-lifecycle-viewmodel:${Version['hiltJetpack']}",
             "hilt-compiler"           : "androidx.hilt:hilt-compiler:${Version['hiltJetpack']}",
+    ]
+
+    GlideLibs = [
+            "glide"        : "com.github.bumptech.glide:glide:${Version['glide']}",
+            "glideCompiler": "com.github.bumptech.glide:compiler:${Version['glide']}",
     ]
 
     NetLibs = [

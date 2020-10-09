@@ -9,6 +9,6 @@ import android.util.Log
  * Modify By:
  * Modify Date:
  */
-fun String.logE(tag: String = "TAG") {
-    Log.e(tag, this)
+fun String?.logE(tag: String = "TAG") {
+    Log.e(tag, this ?: "empty msg")
 }

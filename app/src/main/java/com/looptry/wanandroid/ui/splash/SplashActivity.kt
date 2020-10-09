@@ -37,7 +37,7 @@ class SplashActivity : BaseActivity() {
     override fun onResume() {
         super.onResume()
         lifecycleScope.launchWhenResumed {
-            delay(10000)
+            delay(1000)
             toNextPage()
         }
     }
@@ -45,6 +45,7 @@ class SplashActivity : BaseActivity() {
     private fun toNextPage() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
+        finish()
     }
 
 }

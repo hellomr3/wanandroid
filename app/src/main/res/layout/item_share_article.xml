@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.looptry.wanandroid.model.view.ShareArticleItem" />
+
+        <variable
+            name="click"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding16">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/shareName"
+            style="@style/TextStyle.Desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{item.shareName}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="分享人" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/createTime"
+            style="@style/TextStyle.Desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{item.timeDesc}"
+            app:layout_constraintBaseline_toBaselineOf="@id/shareName"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="时间" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/title"
+            style="@style/TextStyle.Title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="start|center_vertical"
+            android:lines="1"
+            android:text="@{item.title}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/shareName"
+            tools:text="这是文章的标题" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/content"
+            style="@style/TextStyle.Second"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:lines="3"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            tools:text="内容\n内容\n内容" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/selection"
+            style="@style/TextStyle.Desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{item.selection}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/content"
+            tools:text="广场" />
+
+        <ImageView
+            android:id="@+id/likeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@{item.starDrawable}"
+            android:onClick="@{click}"
+            app:layout_constraintBottom_toBottomOf="@id/selection"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/selection"
+            tools:src="@drawable/home_ic_like" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

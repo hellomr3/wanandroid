@@ -38,21 +38,20 @@ android {
 
     protobuf {
         protoc {
-            artifact = 'com.google.protobuf:protoc:${rootProject.ext.Version[\'protobuf\']}'
+            artifact = "com.google.protobuf:protoc:${rootProject.ext.Version['protobuf']}"
         }
         generateProtoTasks {
             all().each { task ->
                 task.builtins {
+                    remove java
                     java {
-                        option "lite"
                     }
                 }
             }
         }
-        generatedFilesBaseDir = "$projectDir/src/generated"
+        generatedFilesBaseDir = "$projectDir/build/generated"
     }
 }
-
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
@@ -61,6 +60,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-    api "com.google.protobuf:protobuf-javalite:${rootProject.ext.Version['protobuf']}"
+    api "com.google.protobuf:protobuf-java:${rootProject.ext.Version['protobuf']}"
     api "com.google.protobuf:protobuf-java-util:${rootProject.ext.Version['protobuf']}"
 }

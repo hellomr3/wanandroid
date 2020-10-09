@@ -1,7 +1,9 @@
 package com.looptry.wanandroid.net
 
-import com.looptry.architecture.request.Result
 import com.looptry.wanandroid.model.entity.ApiResult
+import com.looptry.wanandroid.model.entity.PageResp
+import com.looptry.wanandroid.model.entity.article.ShareArticle
+import com.looptry.wanandroid.model.entity.banner.BannerInfo
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -15,14 +17,20 @@ import retrofit2.http.Path
 interface RequestApi {
 
     /**
-     * 获取首页列表
+     * 获取置顶文章
+     */
+    @GET("/article/top/json")
+    suspend fun getTopArticleList(): ApiResult<List<ShareArticle>>
+
+    /**
+     * 获取分享文章列表
      */
     @GET("/article/list/{page}/json")
-    suspend fun getArticleList(@Path("page") page: Int): ApiResult<Any>
+    suspend fun getArticleList(@Path("page") page: Int): ApiResult<PageResp<ShareArticle>>
 
     /**
      * 获取Banner
      */
     @GET("/banner/json")
-    suspend fun getBannerList(): ApiResult<List<Any>>
+    suspend fun getBannerList(): ApiResult<List<BannerInfo>>
 }

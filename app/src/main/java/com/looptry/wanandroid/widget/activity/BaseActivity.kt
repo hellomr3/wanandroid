@@ -32,7 +32,7 @@ abstract class BaseActivity : BasicActivity() {
     open fun initObserver() {
         //加载框
         shareViewModel.showLoading.observeEvent(this) {
-            "showLoading:${this.javaClass.simpleName},$it".logE()
+//            "showLoading:${this.javaClass.simpleName},$it".logE()
         }
     }
 

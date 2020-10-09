@@ -1,8 +1,13 @@
 <resources>
     <string name="app_name">玩安卓</string>
 
+    <!--request-->
+    <string name="request_loginExpired">用户登陆失效，请重新登陆</string>
+    <string name="request_unknownCode">未知Code:%1$s</string>
+
     <!--main-->
     <string name="main_home">首页</string>
-    <string name="main_nav">导航</string>
+    <string name="main_qa">问答</string>
+    <string name="main_nav">体系</string>
     <string name="main_mine">我的</string>
 </resources>

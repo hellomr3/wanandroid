@@ -62,6 +62,7 @@ class TimedTaskService : JobIntentService() {
         )
         val shareViewModel = point.requireShareViewModel()
         while (true) {
+//            "hei,i'm always online".logE()
             delay(1000)
             val loading = !shareViewModel.showLoading.value!!.peekContent()
             shareViewModel.showLoading.postValue(loading.toEvent())

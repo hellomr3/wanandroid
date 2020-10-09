@@ -2,12 +2,15 @@ package com.looptry.wanandroid.repository
 
 import com.looptry.architecture.request.Result
 import com.looptry.architecture.request.doOnException
+import com.looptry.architecture.request.doOnFailure
+import com.looptry.architecture.request.doOnSuccess
+import com.looptry.wanandroid.ext.handleResult
+import com.looptry.wanandroid.ext.logE
+import com.looptry.wanandroid.model.entity.article.ShareArticle
+import com.looptry.wanandroid.model.entity.banner.BannerInfo
 import com.looptry.wanandroid.net.RequestApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.take
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
@@ -22,6 +25,7 @@ import kotlin.coroutines.CoroutineContext
 class Repository @Inject constructor(
     private val api: RequestApi
 ) : IRequest {
+    val TAG = this::class.java.simpleName
 
     /**
      * 用于执行后台请求
@@ -38,25 +42,41 @@ class Repository @Inject constructor(
             Result.Exception(e)
         }
         result.doOnException {
-            //doSomeThing
+            "onException:${it?.message}".logE(TAG)
+            it?.printStackTrace()
+        }
+        result.doOnSuccess {
+            "onSuccess:$it".logE(TAG)
+        }
+        result.doOnFailure {
+            "onFailure:$it".logE(TAG)
         }
         return result
     }
 
-    override suspend fun getBannerList(): Result<List<Any>> {
+    override suspend fun getBannerList(): Result<List<BannerInfo>> {
         //不用每次都获取Banner列表
         //定义一个缓存时间
         //未过缓存时间从db中获取
-        return try {
-            val resp = api.getBannerList()
-            if (resp.code == 200) {
-                Result.OK(resp.data)
-            } else {
-                Result.Failure(resp.msg)
+        return invokeRequest {
+            api.getBannerList()
+                .handleResult()
+        }
+    }
+
+    override suspend fun getArticleList(page: Int): Result<List<ShareArticle>> {
+        return invokeRequest {
+            val resp = api.getArticleList(page)
+                .handleResult()
+            when (resp) {
+                is Result.OK -> {
+                    val data = resp.data
+                    data.datas
+                    Result.OK(data.datas)
+                }
+                is Result.Failure -> resp
+                is Result.Exception -> resp
             }
-        } catch (e: Throwable) {
-            e.printStackTrace()
-            Result.Exception(e)
         }
     }
 

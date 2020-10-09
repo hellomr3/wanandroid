@@ -57,6 +57,9 @@ dependencies {
     kapt rootProject.ext.HiltLibs["hilt-android-compiler"]
     implementation rootProject.ext.HiltLibs["hilt-lifecycle-viewmodel"]
     kapt rootProject.ext.HiltLibs["hilt-compiler"]
+    //glide
+    implementation rootProject.ext.GlideLibs['glide']
+    kapt rootProject.ext.GlideLibs['glideCompiler']
 
     //test
     testImplementation 'junit:junit:4.12'

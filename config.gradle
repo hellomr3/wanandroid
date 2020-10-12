@@ -21,6 +21,7 @@ ext {
             glide                   : "4.11.0",
             smartRefresh            : '2.0.1',
             bindingcollectionadapter: '4.0.0',
+            paging                  : '3.0.0-alpha06',
     ]
 
     AndroidxLibs = [
@@ -51,6 +52,7 @@ ext {
             "lifecycle-extensions"   : "androidx.lifecycle:lifecycle-extensions:${Version['lifecycleVersion']}",
             "lifecycle-viewmodel-ktx": "androidx.lifecycle:lifecycle-viewmodel-ktx:${Version['lifecycleVersion']}",
             "lifecycle-livedata-ktx" : "androidx.lifecycle:lifecycle-livedata-ktx:${Version['lifecycleVersion']}",
+            "paging"                 : "androidx.paging:paging-runtime:$Version.paging",
     ]
     LifecycleDeps = LifecycleLibs.values()
 
@@ -64,6 +66,10 @@ ext {
     GlideLibs = [
             "glide"        : "com.github.bumptech.glide:glide:${Version['glide']}",
             "glideCompiler": "com.github.bumptech.glide:compiler:${Version['glide']}",
+    ]
+
+    RoomLibs = [
+
     ]
 
     NetLibs = [

@@ -6,6 +6,7 @@ import com.looptry.architecture.request.doOnFailure
 import com.looptry.architecture.request.doOnSuccess
 import com.looptry.wanandroid.ext.handleResult
 import com.looptry.wanandroid.ext.logE
+import com.looptry.wanandroid.model.entity.PageResp
 import com.looptry.wanandroid.model.entity.article.ShareArticle
 import com.looptry.wanandroid.model.entity.banner.BannerInfo
 import com.looptry.wanandroid.net.RequestApi
@@ -64,19 +65,11 @@ class Repository @Inject constructor(
         }
     }
 
-    override suspend fun getArticleList(page: Int): Result<List<ShareArticle>> {
+    override suspend fun getArticleList(page: Int): Result<PageResp<ShareArticle>> {
         return invokeRequest {
             val resp = api.getArticleList(page)
                 .handleResult()
-            when (resp) {
-                is Result.OK -> {
-                    val data = resp.data
-                    data.datas
-                    Result.OK(data.datas)
-                }
-                is Result.Failure -> resp
-                is Result.Exception -> resp
-            }
+            resp
         }
     }
 

@@ -44,6 +44,7 @@
             style="@style/TextStyle.Title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:ellipsize="end"
             android:gravity="start|center_vertical"
             android:lines="1"
@@ -67,21 +68,55 @@
             tools:text="内容\n内容\n内容" />
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/topTag"
+            style="@style/TextStyle.Desc"
+            cornersRadius="@{8f}"
+            strokeColor="@{@color/colorMain}"
+            strokeWidth="@{2f}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text="置顶"
+            android:textColor="@color/colorMain"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/content" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/newTag"
+            style="@style/TextStyle.Desc"
+            cornersRadius="@{8f}"
+            strokeColor="@{@color/colorRed}"
+            strokeWidth="@{2f}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:text="新"
+            android:textColor="@color/colorRed"
+            app:layout_constraintBaseline_toBaselineOf="@id/topTag"
+            app:layout_constraintStart_toEndOf="@id/topTag" />
+
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/selection"
             style="@style/TextStyle.Desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
             android:text="@{item.selection}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/content"
+            app:layout_constraintBaseline_toBaselineOf="@id/topTag"
+            app:layout_constraintStart_toEndOf="@id/newTag"
             tools:text="广场" />
 
         <ImageView
             android:id="@+id/likeBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@{item.starDrawable}"
             android:onClick="@{click}"
+            android:src="@{item.starDrawable}"
             app:layout_constraintBottom_toBottomOf="@id/selection"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/selection"

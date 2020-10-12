@@ -1,7 +1,6 @@
 package com.looptry.wanandroid.ui.home
 
 import android.view.View
-import androidx.databinding.ObservableArrayList
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.looptry.architecture.request.doOnSuccess
@@ -15,6 +14,7 @@ import com.looptry.wanandroid.repository.IRequest
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import me.tatarka.bindingcollectionadapter2.OnItemBind
+import me.tatarka.bindingcollectionadapter2.collections.DiffObservableList
 
 /**
  * Author: mr.3
@@ -23,15 +23,17 @@ import me.tatarka.bindingcollectionadapter2.OnItemBind
  * Modify By:
  * Modify Date:
  */
-class HomeViewModel @ViewModelInject constructor(private val repository: IRequest) : ViewModel() {
+class HomeViewModel @ViewModelInject constructor(
+    private val repository: IRequest
+) : ViewModel() {
 
-    val page = MutableLiveData(0)
+    val nextPage = MutableLiveData(0)
 
     private val _banners = MutableLiveData<List<BannerInfo>>()
 
     val banners: LiveData<List<BannerInfo>> = _banners
 
-    private val _shareArticles = MutableLiveData<List<ShareArticle>>()
+    private val _shareArticles = MutableLiveData<List<ShareArticle>>(emptyList())
 
     val shareArticle = _shareArticles.map {
         it.map { item ->
@@ -43,7 +45,7 @@ class HomeViewModel @ViewModelInject constructor(private val repository: IReques
     val canLoadMore = MutableLiveData(false)
     val finishAll = MutableLiveData(true)
 
-    val items = ObservableArrayList<ShareArticleItem>()
+    val items = DiffObservableList<ShareArticleItem>(ShareArticleItem.diff)
 
     val itemBinding = OnItemBind<ShareArticleItem> { itemBinding, position, item ->
         itemBinding.set(BR.item, R.layout.item_share_article)
@@ -63,11 +65,19 @@ class HomeViewModel @ViewModelInject constructor(private val repository: IReques
 
     //获取首页栏目和数据
     fun getArticleList(page: Int) = viewModelScope.launch {
-        val resp = repository.getArticleList(page)
-        resp.doOnSuccess {
-            _shareArticles.value = it
-            //可以加载第二页
-            this@HomeViewModel.page.value = this@HomeViewModel.page.value!! + 1
+
+        val result = repository.getArticleList(page)
+        result.doOnSuccess { data ->
+            //能否继续加载
+            canLoadMore.value = data.page < data.pageCount
+            //停止刷新、加载
+            finishAll.value = true
+            val oldItems = _shareArticles.value ?: emptyList()
+            val newItems = data.datas
+            //更新数据
+            _shareArticles.value = if (page == 0) newItems else oldItems + newItems
+            //更新nextPage
+            nextPage.value = page + 1
         }
     }
 

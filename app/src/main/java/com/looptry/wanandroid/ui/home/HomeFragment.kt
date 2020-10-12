@@ -7,7 +7,6 @@ import com.looptry.wanandroid.BR
 import com.looptry.wanandroid.R
 import com.looptry.wanandroid.ext.logE
 import com.looptry.wanandroid.widget.fragment.BaseFragment
-import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.scwang.smart.refresh.layout.api.RefreshLayout
 import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener
@@ -41,6 +40,7 @@ class HomeFragment : BaseFragment() {
 
     override fun getDataBindingConfig(): DataBindingConfig {
         return DataBindingConfig(BR.vm, R.layout.fragment_home, viewModel)
+            .addBindingParams(BR.click, ClickProxy())
     }
 
     override fun initObserver() {
@@ -52,7 +52,7 @@ class HomeFragment : BaseFragment() {
         }
 
         viewModel.shareArticle.observe(this) {
-            viewModel.items.addAll(it)
+            viewModel.items.update(it)
         }
     }
 
@@ -62,6 +62,9 @@ class HomeFragment : BaseFragment() {
             .setAdapter(bannerAdapter)
 //            .setBannerGalleryEffect(20,20,0,0.8f)
             .setBannerGalleryMZ(10, 1f)
+        //关闭RecyclerView动画效果
+        homeRv.itemAnimator?.changeDuration = 0
+        homeRv.itemAnimator?.removeDuration = 0
     }
 
     override fun request() {
@@ -72,11 +75,11 @@ class HomeFragment : BaseFragment() {
 
     inner class ClickProxy : OnRefreshListener, OnLoadMoreListener {
         override fun onRefresh(refreshLayout: RefreshLayout) {
-
+            viewModel.getArticleList(0)
         }
 
         override fun onLoadMore(refreshLayout: RefreshLayout) {
-            val page = viewModel.page.value!!
+            val page = viewModel.nextPage.value!!
             viewModel.getArticleList(page)
         }
     }

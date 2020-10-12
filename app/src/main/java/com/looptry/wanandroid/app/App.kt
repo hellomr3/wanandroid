@@ -35,6 +35,7 @@ class App : BasicApplication() {
         }
         SmartRefreshLayout.setDefaultRefreshFooterCreator { context, layout ->
             ClassicsFooter(context).apply {
+                setFinishDuration(0)
                 setDrawableSize(20f)
             }
         }

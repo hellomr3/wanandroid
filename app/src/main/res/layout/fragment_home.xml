@@ -7,13 +7,22 @@
         <variable
             name="vm"
             type="com.looptry.wanandroid.ui.home.HomeViewModel" />
+
+        <variable
+            name="click"
+            type="com.looptry.wanandroid.ui.home.HomeFragment.ClickProxy" />
     </data>
 
     <com.scwang.smart.refresh.layout.SmartRefreshLayout
         canLoadMore="@{vm.canLoadMore}"
+        canRefresh="@{true}"
         finishAll="@{vm.finishAll}"
+        onLoadMoreListener="@{click}"
+        onRefreshListener="@{click}"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"

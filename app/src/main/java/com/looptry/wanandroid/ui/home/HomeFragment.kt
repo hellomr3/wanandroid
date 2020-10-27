@@ -1,7 +1,9 @@
 package com.looptry.wanandroid.ui.home
 
 import android.os.Bundle
+import android.widget.TextView
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.looptry.architecture.page.DataBindingConfig
 import com.looptry.wanandroid.BR
 import com.looptry.wanandroid.R
@@ -12,6 +14,7 @@ import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.coroutines.delay
 
 /**
  * Author: mr.3
@@ -58,6 +61,7 @@ class HomeFragment : BaseFragment() {
 
     override fun initView() {
         super.initView()
+        //banner
         banner.addBannerLifecycleObserver(this)
             .setAdapter(bannerAdapter)
 //            .setBannerGalleryEffect(20,20,0,0.8f)

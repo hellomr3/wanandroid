@@ -33,4 +33,7 @@ interface RequestApi {
      */
     @GET("/banner/json")
     suspend fun getBannerList(): ApiResult<List<BannerInfo>>
+
+    @GET("/user/news/findAllNews")
+    suspend fun getSection(): ApiResult<Any>
 }

@@ -1,7 +1,6 @@
 package com.looptry.wanandroid.bindingadapter
 
 import android.view.View
-import androidx.annotation.ColorInt
 import androidx.databinding.BindingAdapter
 import com.looptry.wanandroid.widget.DrawableCreator
 
@@ -13,6 +12,9 @@ import com.looptry.wanandroid.widget.DrawableCreator
  * Modify Date:
  */
 
+/**
+ * 通用背景设置
+ */
 @BindingAdapter(
     value = [
         "strokeWidth",
@@ -55,4 +57,26 @@ fun View.setBackgroundDrawable(
     }
 
     this.background = builder.build()
+}
+
+/**
+ *  作用于View处理View的显示问题
+ *  同时使用时优先响应hide
+ **/
+@BindingAdapter(value = ["showOrHide", "showOrGone"], requireAll = false)
+fun View.setVisible(
+    showOrHide: Boolean?,
+    showOrGone: Boolean?
+) {
+    visibility = when {
+        showOrHide == false -> {
+            View.INVISIBLE
+        }
+        showOrGone == false -> {
+            View.GONE
+        }
+        else -> {
+            View.VISIBLE
+        }
+    }
 }

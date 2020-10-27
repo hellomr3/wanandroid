@@ -16,13 +16,18 @@ import com.looptry.wanandroid.ext.getDrawableRes
 data class ShareArticleItem(
     val id: Int,
     val createTime: Long,
-    val shareName: String,
+    val shareName: String,                  //分享人名称/作者
     val timeDesc: String,
     val title: String,
-    val selection: String,
-    var star: MutableLiveData<Boolean>,
-    val link: String
+    val selection: String,                  //栏目
+    var stared: Boolean,
+    val link: String,                       //地址
+    val top: Boolean,                       //是否置顶
+    val fresh: Boolean                      //最新？
 ) {
+    //处理用户点赞
+    val star = MutableLiveData(stared)
+
     val starDrawable =
         star.map { if (it) getDrawableRes(R.drawable.home_ic_liked) else getDrawableRes(R.drawable.home_ic_like) }
 

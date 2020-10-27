@@ -1,6 +1,5 @@
 package com.looptry.wanandroid
 
-import org.junit.Assert.assertEquals
 import org.junit.Test
 
 /**
@@ -8,14 +7,12 @@ import org.junit.Test
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  */
-class ExampleUnitTest {
-    @Test
-    fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
-    }
+class ExampleUnitTest2 {
 
     @Test
     fun doSomething() {
-        println("hello world")
+
+        val test = Test2()
+        test.doNothing()
     }
 }

@@ -5,5 +5,4 @@ option java_outer_classname = "message";
 
 message UserInfo {
     string userName = 1;
-
 }

@@ -18,7 +18,7 @@ object ShareArticle2ShareArticleItem : Mapper<ShareArticle, ShareArticleItem?> {
         val timeDesc = input.niceShareDate
         val title = input.title
         val selection = "${input.superChapterName}.${input.chapterName}"
-        val star = MutableLiveData(input.zan == 1)
+        val star = input.zan == 1
         val link = input.link
         val item = ShareArticleItem(
             id = input.id,
@@ -28,7 +28,9 @@ object ShareArticle2ShareArticleItem : Mapper<ShareArticle, ShareArticleItem?> {
             title,
             selection,
             star,
-            link
+            link,
+            top = false,
+            fresh = input.fresh
         )
         return item
     }

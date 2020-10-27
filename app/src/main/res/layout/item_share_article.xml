@@ -71,6 +71,7 @@
             android:id="@+id/topTag"
             style="@style/TextStyle.Desc"
             cornersRadius="@{8f}"
+            showOrGone="@{item.top}"
             strokeColor="@{@color/colorMain}"
             strokeWidth="@{2f}"
             android:layout_width="wrap_content"
@@ -87,6 +88,7 @@
             android:id="@+id/newTag"
             style="@style/TextStyle.Desc"
             cornersRadius="@{8f}"
+            showOrGone="@{item.fresh}"
             strokeColor="@{@color/colorRed}"
             strokeWidth="@{2f}"
             android:layout_width="wrap_content"
@@ -97,8 +99,8 @@
             android:paddingEnd="4dp"
             android:text="新"
             android:textColor="@color/colorRed"
-            app:layout_constraintBaseline_toBaselineOf="@id/topTag"
-            app:layout_constraintStart_toEndOf="@id/topTag" />
+            app:layout_constraintStart_toEndOf="@id/topTag"
+            app:layout_constraintTop_toBottomOf="@id/title" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/selection"
@@ -106,9 +108,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
             android:text="@{item.selection}"
-            app:layout_constraintBaseline_toBaselineOf="@id/topTag"
             app:layout_constraintStart_toEndOf="@id/newTag"
+            app:layout_constraintTop_toBottomOf="@id/title"
             tools:text="广场" />
 
         <ImageView

@@ -83,7 +83,7 @@ class HomeViewModel @ViewModelInject constructor(
 
     //收藏或取消收藏
     private fun toCollection(item: ShareArticleItem) = viewModelScope.launch {
-        delay(1000)
+        delay(200)
         item.star.value = !item.star.value!!
     }
 }

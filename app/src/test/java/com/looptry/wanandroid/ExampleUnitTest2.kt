@@ -11,8 +11,7 @@ class ExampleUnitTest2 {
 
     @Test
     fun doSomething() {
-
-        val test = Test2()
-        test.doNothing()
+//        Runner().run()
+        Runner().t()
     }
 }

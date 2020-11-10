@@ -35,6 +35,7 @@ android {
     //dataBinding
     buildFeatures {
         dataBinding = true
+        viewBinding = true
     }
 }
 
@@ -42,7 +43,7 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(":protobuf")
     //art
-    implementation "com.github.hellomr3:Architecture:1.0.8"
+    implementation "com.looptry.architecture:architecture:1.0.8"
     implementation 'com.blankj:utilcodex:1.29.0'
     //androidx-ktx
     implementation rootProject.ext.AndroidxDeps

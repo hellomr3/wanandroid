@@ -1,6 +1,5 @@
 package com.looptry.wanandroid.model.mapper
 
-import androidx.lifecycle.MutableLiveData
 import com.looptry.architecture.model.mapper.Mapper
 import com.looptry.wanandroid.model.entity.article.ShareArticle
 import com.looptry.wanandroid.model.view.ShareArticleItem
@@ -14,24 +13,7 @@ import com.looptry.wanandroid.model.view.ShareArticleItem
  */
 object ShareArticle2ShareArticleItem : Mapper<ShareArticle, ShareArticleItem?> {
     override fun map(input: ShareArticle): ShareArticleItem {
-        val shareName = if (input.author.isNullOrBlank()) input.shareUser else input.author
-        val timeDesc = input.niceShareDate
-        val title = input.title
-        val selection = "${input.superChapterName}.${input.chapterName}"
-        val star = input.zan == 1
-        val link = input.link
-        val item = ShareArticleItem(
-            id = input.id,
-            createTime = input.publishTime,
-            shareName,
-            timeDesc,
-            title,
-            selection,
-            star,
-            link,
-            top = false,
-            fresh = input.fresh
-        )
-        return item
+
+        return ShareArticleItem(input, input::class.java.simpleName)
     }
 }

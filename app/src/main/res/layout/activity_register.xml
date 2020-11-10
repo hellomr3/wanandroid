@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.looptry.wanandroid.ui.register.RegisterViewModel" />
+
+        <variable
+            name="click"
+            type="com.looptry.wanandroid.ui.register.RegisterActivity.ClickProxy" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            finish="@{true}"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/common_ic_back"
+            app:title="@string/register_userRegister"
+            app:titleTextColor="@color/color333" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/username"
+            style="@style/SimpleEdit"
+            android:hint="@string/login_username_hint"
+            android:text="@={vm.inputUserName}"
+            android:theme="@style/TextStyle.Second"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:met_floatingLabelText="@string/login_username" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/password"
+            style="@style/SimpleEdit"
+            android:layout_marginTop="@dimen/dp0"
+            android:hint="@string/login_password_hint"
+            android:inputType="textPassword"
+            android:text="@={vm.inputPassword}"
+            android:theme="@style/TextStyle.Second"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/username"
+            app:met_baseColor="@color/color333"
+            app:met_floatingLabelText="@string/login_password" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/reassword"
+            style="@style/SimpleEdit"
+            android:layout_marginTop="@dimen/dp0"
+            android:hint="@string/register_repassword_hint"
+            android:inputType="textPassword"
+            android:text="@={vm.inputRePassword}"
+            android:theme="@style/TextStyle.Second"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/password"
+            app:met_baseColor="@color/color333"
+            app:met_floatingLabelText="@string/register_repassword" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnLogin"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/margin16"
+            android:onClick="@{()->click.register()}"
+            android:text="@string/register_register"
+            app:layout_constraintDimensionRatio="360:48"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/reassword" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -10,6 +10,6 @@ import com.blankj.utilcode.util.ToastUtils
  * Modify Date:
  */
 
-fun Any.showToast() {
+fun Any?.showToast() {
     ToastUtils.showShort(this.toString())
 }

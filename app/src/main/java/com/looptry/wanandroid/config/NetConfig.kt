@@ -9,4 +9,6 @@ package com.looptry.wanandroid.config
  */
 object NetConfig {
     const val HTTP_URL = "https://www.wanandroid.com/"
+
+
 }

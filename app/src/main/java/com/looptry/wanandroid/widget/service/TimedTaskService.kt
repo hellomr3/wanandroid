@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.core.app.JobIntentService
 import com.blankj.utilcode.util.Utils
-import com.looptry.architecture.livedata.toEvent
+import com.looptry.architecture.ext.toEvent
 import com.looptry.wanandroid.ext.logE
 import com.looptry.wanandroid.widget.viewmodel.ShareViewModel
 import dagger.hilt.EntryPoint

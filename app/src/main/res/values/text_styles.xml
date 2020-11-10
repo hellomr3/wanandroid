@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="TextStyle">
+    <style name="SimpleText">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="TextStyle">
+
     </style>
 
     <style name="TextStyle.Title">
@@ -20,4 +24,6 @@
         <item name="android:textColor">@color/color999</item>
         <item name="android:textSize">@dimen/text12</item>
     </style>
+
+
 </resources>

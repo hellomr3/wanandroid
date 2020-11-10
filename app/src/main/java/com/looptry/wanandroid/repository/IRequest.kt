@@ -15,5 +15,11 @@ import com.looptry.wanandroid.model.entity.banner.BannerInfo
 interface IRequest {
     suspend fun getBannerList(): Result<List<BannerInfo>>
 
-    suspend fun getArticleList(page:Int): Result<PageResp<ShareArticle>>
+    suspend fun getTopArticles(): Result<List<ShareArticle>>
+
+    suspend fun getArticleList(page: Int): Result<PageResp<ShareArticle>>
+
+    suspend fun login(username: String, password: String): Result<Any>
+
+    suspend fun register(username: String, password: String, repassword: String): Result<Any>
 }

@@ -7,6 +7,5 @@ package com.looptry.wanandroid;
  * Modify By:
  * Modify Date:
  */
-interface l1 {
-   default void f1(){}
+class C1 {
 }

@@ -4,12 +4,15 @@ import com.looptry.architecture.request.Result
 import com.looptry.architecture.request.doOnException
 import com.looptry.architecture.request.doOnFailure
 import com.looptry.architecture.request.doOnSuccess
+import com.looptry.wanandroid.ext.encryptMd5
 import com.looptry.wanandroid.ext.handleResult
 import com.looptry.wanandroid.ext.logE
+import com.looptry.wanandroid.ext.map
 import com.looptry.wanandroid.model.entity.PageResp
 import com.looptry.wanandroid.model.entity.article.ShareArticle
 import com.looptry.wanandroid.model.entity.banner.BannerInfo
 import com.looptry.wanandroid.net.RequestApi
+import com.looptry.wanandroid.net.UserApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -24,9 +27,10 @@ import kotlin.coroutines.CoroutineContext
  * Modify Date:
  */
 class Repository @Inject constructor(
-    private val api: RequestApi
+    private val api: RequestApi,
+    private val userApi: UserApi
 ) : IRequest {
-    val TAG = this::class.java.simpleName
+    private val TAG = this::class.java.simpleName
 
     /**
      * 用于执行后台请求
@@ -65,9 +69,42 @@ class Repository @Inject constructor(
         }
     }
 
+    override suspend fun getTopArticles(): Result<List<ShareArticle>> {
+        return invokeRequest {
+            api.getTopArticleList()
+                .handleResult()
+                .map {
+                    val newList = it.map { shareArticle ->
+                        shareArticle.copy(top = true)
+                    }
+                    newList
+                }
+        }
+    }
+
     override suspend fun getArticleList(page: Int): Result<PageResp<ShareArticle>> {
         return invokeRequest {
             val resp = api.getArticleList(page)
+                .handleResult()
+            resp
+        }
+    }
+
+    override suspend fun login(username: String, password: String): Result<Any> {
+        return invokeRequest {
+            val resp = userApi.login(username, password.encryptMd5())
+                .handleResult()
+            resp
+        }
+    }
+
+    override suspend fun register(
+        username: String,
+        password: String,
+        repassword: String
+    ): Result<Any> {
+        return invokeRequest {
+            val resp = userApi.register(username, password.encryptMd5(), repassword.encryptMd5())
                 .handleResult()
             resp
         }

@@ -74,17 +74,20 @@ class HomeFragment : BaseFragment() {
     override fun request() {
         super.request()
         viewModel.getBannerList()
-        viewModel.getArticleList(0)
+        viewModel.getTopArticleList()
+        viewModel.getArticleList(showLoading = true, 0)
     }
 
     inner class ClickProxy : OnRefreshListener, OnLoadMoreListener {
         override fun onRefresh(refreshLayout: RefreshLayout) {
-            viewModel.getArticleList(0)
+            viewModel.getBannerList()
+            viewModel.getTopArticleList()
+            viewModel.getArticleList(page = 0)
         }
 
         override fun onLoadMore(refreshLayout: RefreshLayout) {
             val page = viewModel.nextPage.value!!
-            viewModel.getArticleList(page)
+            viewModel.getArticleList(page = page)
         }
     }
 }

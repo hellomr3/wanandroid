@@ -9,6 +9,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Singleton
 
 /**
  * Author: mr.3
@@ -22,6 +23,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 object ViewModelModule {
 
     @Provides
+    @Singleton
     fun provideShareViewModel(
         @ApplicationContext context: Context
     ): ShareViewModel {

@@ -7,9 +7,6 @@ package com.looptry.wanandroid;
  * Modify By:
  * Modify Date:
  */
-public class Employee  {
-
-    void f1(){
-
-    }
+interface I1 {
+    void i1();
 }

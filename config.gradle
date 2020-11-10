@@ -35,6 +35,7 @@ ext {
 
     ViewLibs = [
             "material"                             : "com.google.android.material:material:${Version['materialVersion']}",
+            "materialEditText"                     : "com.rengwuxian.materialedittext:library:2.1.4",
             "constraintlayout"                     : "androidx.constraintlayout:constraintlayout:2.0.1",
             "banner"                               : 'com.youth.banner:banner:2.1.0',
             "smartRefresh"                         : "com.scwang.smart:refresh-layout-kernel:$Version.smartRefresh",

@@ -79,7 +79,7 @@
             android:layout_marginTop="4dp"
             android:paddingStart="4dp"
             android:paddingEnd="4dp"
-            android:text="置顶"
+            android:text="@string/home_top"
             android:textColor="@color/colorMain"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/content" />
@@ -97,7 +97,7 @@
             android:layout_marginTop="4dp"
             android:paddingStart="4dp"
             android:paddingEnd="4dp"
-            android:text="新"
+            android:text="@string/home_fresh"
             android:textColor="@color/colorRed"
             app:layout_constraintStart_toEndOf="@id/topTag"
             app:layout_constraintTop_toBottomOf="@id/title" />
@@ -109,7 +109,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginTop="4dp"
-            android:text="@{item.selection}"
+            android:text="@{item.section}"
             app:layout_constraintStart_toEndOf="@id/newTag"
             app:layout_constraintTop_toBottomOf="@id/title"
             tools:text="广场" />
@@ -119,7 +119,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="@{click}"
-            android:src="@{item.starDrawable}"
+            android:src="@{item.collectionDrawable}"
             app:layout_constraintBottom_toBottomOf="@id/selection"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/selection"

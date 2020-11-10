@@ -1,5 +1,8 @@
 package com.looptry.wanandroid.model.entity.article
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
 /**
  * Author: mr.3
  * Date:
@@ -7,6 +10,7 @@ package com.looptry.wanandroid.model.entity.article
  * Modify By:
  * Modify Date:
  */
+@Parcelize
 data class ShareArticle(
     val apkLink: String,
     val audit: Int,
@@ -34,10 +38,14 @@ data class ShareArticle(
     val shareUser: String,
     val superChapterId: Int,
     val superChapterName: String,
-    val tags: List<Any>,
+//    val tags: List<String>,
     val title: String,
     val type: Int,
     val userId: Int,
     val visible: Int,
-    val zan: Int
-)
+    val zan: Int,
+    //自定义
+    var top: Boolean = false            //是否是置顶文章
+) : Parcelable {
+
+}

@@ -6,6 +6,7 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.looptry.architecture.request.doOnFailure
 import com.looptry.architecture.request.doOnSuccess
+import com.looptry.protobuf.entity.message
 import com.looptry.wanandroid.BR
 import com.looptry.wanandroid.R
 import com.looptry.wanandroid.app.LoginManager
@@ -18,6 +19,7 @@ import com.looptry.wanandroid.model.view.ShareArticleItem
 import com.looptry.wanandroid.repository.IRequest
 import dagger.hilt.android.qualifiers.ActivityContext
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import me.tatarka.bindingcollectionadapter2.OnItemBind
@@ -80,7 +82,7 @@ class HomeViewModel @ViewModelInject constructor(
     }
 
     //获取Banner
-    fun getBannerList() = viewModelScope.launch {
+    fun getBannerList() =launchAsyncRequest {
         val resp = repository.getBannerList()
         resp.doOnSuccess {
             _banners.value = it

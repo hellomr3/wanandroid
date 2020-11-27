@@ -1,11 +1,16 @@
 package com.looptry.wanandroid.ext
 
+import android.content.Context
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.blankj.utilcode.util.ActivityUtils
 import com.looptry.architecture.ext.toEvent
 import com.looptry.wanandroid.widget.activity.BaseActivity
+import com.looptry.wanandroid.widget.viewmodel.ShareViewModel
+import dagger.hilt.android.qualifiers.ActivityContext
 import kotlinx.coroutines.*
+import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
 /**
@@ -15,6 +20,18 @@ import kotlin.coroutines.CoroutineContext
  * Modify By:
  * Modify Date:
  */
+
+suspend fun CoroutineContext.launchWithExceptionHandler(
+    handler: CoroutineExceptionHandler,
+    block: suspend CoroutineScope.() -> Unit
+) {
+    supervisorScope {
+        launch(this@launchWithExceptionHandler + handler) {
+            block()
+        }
+    }
+}
+
 /**
  * 处理请求中的异常
  */
@@ -23,27 +40,25 @@ fun ViewModel.launchAsyncRequest(
     showLoading: Boolean = false,
     onFinished: () -> Unit = {},
     block: suspend CoroutineScope.() -> Unit
-) {
+) = viewModelScope.launch(context) {
+
     val shareViewModel = (ActivityUtils.getTopActivity() as BaseActivity).shareViewModel
-    //捕获异常
+    //监督异常
     val handler = CoroutineExceptionHandler { _, throwable ->
         handleException(throwable, onFinished)
     }
-    viewModelScope.launch(handler + context) {
-        try {
+    supervisorScope {
+        launch(handler) {
             try {
                 if (showLoading) shareViewModel.showLoading.postValue(true.toEvent())
-                supervisorScope {
-                    block()
-                }
+                this.coroutineContext.launchWithExceptionHandler(handler, block)
             } finally {
                 if (showLoading) shareViewModel.showLoading.postValue(false.toEvent())
                 onFinished.invoke()
             }
-        } catch (t: Throwable) {
-            handleException(t, onFinished)
         }
     }
+
 }
 
 //处理异常
@@ -61,3 +76,4 @@ private fun handleException(e: Throwable, onFinished: () -> Unit) {
         }
     }
 }
+

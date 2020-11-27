@@ -13,6 +13,7 @@ import com.scwang.smart.refresh.layout.api.RefreshLayout
 import com.scwang.smart.refresh.layout.listener.DefaultRefreshFooterCreator
 import com.scwang.smart.refresh.layout.listener.DefaultRefreshHeaderCreator
 import dagger.hilt.android.HiltAndroidApp
+import io.microshow.rxffmpeg.RxFFmpegInvoke
 
 /**
  * Author: mr.3
@@ -27,6 +28,8 @@ class App : BasicApplication() {
         super.onCreate()
         //初始化Utils
         Utils.init(this)
+
+        RxFFmpegInvoke.getInstance().setDebug(true)
     }
 
     init {

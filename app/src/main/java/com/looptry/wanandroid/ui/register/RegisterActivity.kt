@@ -5,6 +5,8 @@ import android.content.Intent
 import androidx.activity.viewModels
 import com.looptry.architecture.page.DataBindingConfig
 import com.looptry.wanandroid.R
+import com.looptry.wanandroid.ext.getStringRes
+import com.looptry.wanandroid.ext.showToast
 import com.looptry.wanandroid.widget.activity.BaseActivity
 import me.tatarka.bindingcollectionadapter2.BR
 
@@ -32,7 +34,22 @@ class RegisterActivity : BaseActivity() {
 
     inner class ClickProxy {
         fun register() {
-
+            val username = viewModel.inputUserName.value
+            val password = viewModel.inputPassword.value
+            val repassword = viewModel.inputRePassword.value
+            if (username.isNullOrBlank()) {
+                getStringRes(R.string.register_username_hint).showToast()
+                return
+            }
+            if (password.isNullOrBlank()) {
+                getStringRes(R.string.register_password_hint).showToast()
+                return
+            }
+            if (repassword.isNullOrBlank()) {
+                getStringRes(R.string.register_repassword_hint).showToast()
+                return
+            }
+            viewModel.register(username, password, repassword)
         }
     }
 }

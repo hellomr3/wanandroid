@@ -1,20 +1,17 @@
 package com.looptry.wanandroid.ui.home
 
 import android.os.Bundle
-import android.widget.TextView
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.looptry.architecture.page.DataBindingConfig
 import com.looptry.wanandroid.BR
 import com.looptry.wanandroid.R
-import com.looptry.wanandroid.ext.logE
 import com.looptry.wanandroid.widget.fragment.BaseFragment
 import com.scwang.smart.refresh.layout.api.RefreshLayout
 import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.coroutines.delay
 
 /**
  * Author: mr.3
@@ -66,6 +63,14 @@ class HomeFragment : BaseFragment() {
             .setAdapter(bannerAdapter)
 //            .setBannerGalleryEffect(20,20,0,0.8f)
             .setBannerGalleryMZ(10, 1f)
+
+        homeRv.addItemDecoration(
+            DividerItemDecoration(
+                this.context,
+                DividerItemDecoration.VERTICAL
+            )
+        )
+
         //关闭RecyclerView动画效果
         homeRv.itemAnimator?.changeDuration = 0
         homeRv.itemAnimator?.removeDuration = 0

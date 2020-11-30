@@ -16,10 +16,11 @@ import com.looptry.wanandroid.R
  */
 
 fun Context.requestPermission(
-    @PermissionConstants.Permission vararg permissions: String,//需要获取的权限
+   vararg permissions: String,//需要获取的权限
     onDenied: () -> Unit,
     onGrantedOrSuccess: () -> Unit
 ) {
+    PermissionConstants.STORAGE
     if (!PermissionUtils.isGranted(*permissions)) {
         PermissionUtils.permission(*permissions)
             .rationale { _, shouldRequest ->

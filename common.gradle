@@ -1,14 +1,14 @@
 android {
     buildTypes {
-        dev1 {
-            buildConfigField('String', 'baseUrl', "dev1")
-        }
-        dev2 {
-            buildConfigField('String', 'baseUrl', "dev2")
-        }
-        pre {
-            buildConfigField('String', 'baseUrl', "pre")
-        }
+//        dev1 {
+//            buildConfigField('String', 'baseUrl', "dev1")
+//        }
+//        dev2 {
+//            buildConfigField('String', 'baseUrl', "dev2")
+//        }
+//        pre {
+//            buildConfigField('String', 'baseUrl', "pre")
+//        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'

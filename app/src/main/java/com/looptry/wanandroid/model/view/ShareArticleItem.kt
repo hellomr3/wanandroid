@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.DiffUtil
 import com.looptry.wanandroid.R
 import com.looptry.wanandroid.ext.getDrawableRes
 import com.looptry.wanandroid.model.entity.article.ShareArticle
+import me.tatarka.bindingcollectionadapter2.ItemBinding
+import me.tatarka.bindingcollectionadapter2.itembindings.ItemBindingModel
 
 /**
  * Author: mr.3
@@ -61,4 +63,6 @@ data class ShareArticleItem(
     val collectionDrawable =
         collection.map { if (it) getDrawableRes(R.drawable.home_ic_liked) else getDrawableRes(R.drawable.home_ic_like) }
 
+    val coverUrl = "https://www.wanandroid.com/blogimgs/b1bd944a-4a9e-4722-81c5-079676422c5e.jpg"
+    val url = "https://stream7.iqilu.com/10339/upload_transcode/202002/18/20200218114723HDu3hhxqIT.mp4"
 }

@@ -17,6 +17,7 @@ import com.looptry.wanandroid.widget.DrawableCreator
  */
 @BindingAdapter(
     value = [
+        "solidColor",
         "strokeWidth",
         "strokeColor",
         "cornersRadius",
@@ -27,6 +28,7 @@ import com.looptry.wanandroid.widget.DrawableCreator
     ], requireAll = false
 )
 fun View.setBackgroundDrawable(
+    solidColor: Int,
     strokeWidth: Float,
     strokeColor: Int,
     cornersRadius: Float,
@@ -35,8 +37,11 @@ fun View.setBackgroundDrawable(
     cornersTopLeftRadius: Float,
     cornersTopRightRadius: Float,
 ) {
-    //Stroke
+
     val builder = DrawableCreator.Builder()
+    //Solid
+    builder.setSolidColor(solidColor)
+    //Stroke
     builder.setStrokeWidth(strokeWidth)
         .setStrokeColor(strokeColor)
     //CornerRadius

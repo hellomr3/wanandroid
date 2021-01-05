@@ -9,6 +9,8 @@
     <color name="colorWhite">#FFF</color>
     <color name="colorRed">#C80D0D</color>
 
+    <color name="colorBg">#BDBDBD</color>
+
     <color name="color333">#333333</color>
     <color name="color666">#666666</color>
     <color name="color999">#999999</color>

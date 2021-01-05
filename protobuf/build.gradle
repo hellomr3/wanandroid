@@ -2,6 +2,9 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.google.protobuf'
+
+apply from:rootProject.file("common.gradle")
+
 android {
 
     compileSdkVersion rootProject.ext.Android['compileSdkVersion']

@@ -46,6 +46,4 @@ data class ShareArticle(
     val zan: Int,
     //自定义
     var top: Boolean = false            //是否是置顶文章
-) : Parcelable {
-
-}
+) : Parcelable

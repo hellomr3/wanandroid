@@ -1,0 +1,55 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+apply from:rootProject.file("common.gradle")
+
+android {
+    compileSdkVersion rootProject.ext.Android['compileSdkVersion']
+    buildToolsVersion rootProject.ext.Android['buildToolsVersion']
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.Android['minSdkVersion']
+        targetSdkVersion rootProject.ext.Android['targetSdkVersion']
+        versionCode rootProject.ext.Android['versionCode']
+        versionName rootProject.ext.Android['versionName']
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    //Kotlin
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+    //Java8
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    //dataBinding
+    buildFeatures {
+        dataBinding = true
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:${rootProject.ext.Version['kotlinVersion']}"
+    //hilt
+    implementation rootProject.ext.HiltLibs["hilt-android"]
+    kapt rootProject.ext.HiltLibs["hilt-android-compiler"]
+    implementation rootProject.ext.HiltLibs["hilt-lifecycle-viewmodel"]
+    kapt rootProject.ext.HiltLibs["hilt-compiler"]
+    //root
+    api rootProject.ext.RoomLibs["room"]
+    kapt rootProject.ext.RoomLibs["room-compiler"]
+
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.8"
+
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}

@@ -1,3 +1,4 @@
+include ':db'
 include ':recyclerview'
 include ':protobuf'
 include ':app'

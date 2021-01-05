@@ -2,7 +2,9 @@ package com.looptry.wanandroid.ui.home
 
 import android.os.Bundle
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.GridLayoutManager
 import com.looptry.architecture.page.DataBindingConfig
 import com.looptry.wanandroid.BR
 import com.looptry.wanandroid.R
@@ -52,7 +54,8 @@ class HomeFragment : BaseFragment() {
         }
 
         viewModel.shareArticle.observe(this) {
-            viewModel.items.update(it)
+            val diffResult = viewModel.items.calculateDiff(it)
+            viewModel.items.update(it, diffResult)
         }
     }
 
@@ -70,10 +73,12 @@ class HomeFragment : BaseFragment() {
                 DividerItemDecoration.VERTICAL
             )
         )
-
         //关闭RecyclerView动画效果
         homeRv.itemAnimator?.changeDuration = 0
         homeRv.itemAnimator?.removeDuration = 0
+
+//        homeRv.layoutManager = GridLayoutManager(this.context,4)
+
     }
 
     override fun request() {

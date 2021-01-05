@@ -22,8 +22,11 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import me.tatarka.bindingcollectionadapter2.ItemBinding
 import me.tatarka.bindingcollectionadapter2.OnItemBind
 import me.tatarka.bindingcollectionadapter2.collections.DiffObservableList
+import me.tatarka.bindingcollectionadapter2.itembindings.ItemBindingModel
+import me.tatarka.bindingcollectionadapter2.itembindings.OnItemBindModel
 
 /**
  * Author: mr.3
@@ -82,7 +85,7 @@ class HomeViewModel @ViewModelInject constructor(
     }
 
     //获取Banner
-    fun getBannerList() =launchAsyncRequest {
+    fun getBannerList() = launchAsyncRequest {
         val resp = repository.getBannerList()
         resp.doOnSuccess {
             _banners.value = it

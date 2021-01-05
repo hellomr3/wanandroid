@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.looptry.wanandroid.ui.room_test.RoomTestViewModel" />
+
+        <variable
+            name="click"
+            type="com.looptry.wanandroid.ui.room_test.RoomTestActivity.ClickProxy" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/userId"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="请输入用户id"
+            android:text="@={vm.userId}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <EditText
+            android:id="@+id/libraryId"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="请输入LibraryId"
+            android:text="@={vm.libraryId}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/userId" />
+
+        <Button
+            android:id="@+id/createUser"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->click.createUser()}"
+            android:text="创建用户"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/libraryId" />
+
+        <Button
+            android:id="@+id/createLibrary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->click.createLibrary()}"
+            android:text="创建历史记录"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/createUser" />
+
+        <Button
+            android:id="@+id/deleteUser"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->click.deleteUser()}"
+            android:text="删除用户"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/createLibrary" />
+
+        <Button
+            android:id="@+id/deleteLibrary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->click.deleteLibrary()}"
+            android:text="删除历史记录"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/deleteUser" />
+
+        <Button
+            android:id="@+id/queryView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->click.queryView()}"
+            android:text="查询视图"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/deleteLibrary" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->click.toNext()}"
+            android:text="去下一页"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/queryView" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

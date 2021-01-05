@@ -15,13 +15,14 @@ ext {
             hiltJetpack             : '1.0.0-alpha02',
             materialVersion         : '1.2.1',
             lifecycleVersion        : '2.2.0',
+            room                    : '2.2.5',
             okhttp3                 : "4.9.0",
             retrofit2               : "2.9.0",
             protobuf                : "3.13.0",
             glide                   : "4.11.0",
             smartRefresh            : '2.0.1',
             bindingcollectionadapter: '4.0.0',
-            paging                  : '3.0.0-alpha06',
+            paging                  : '2.1.2',
     ]
 
     AndroidxLibs = [
@@ -44,6 +45,8 @@ ext {
             "bindingcollectionadapter"             : "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:$Version.bindingcollectionadapter",
             "bindingcollectionadapter-recyclerview": "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:$Version.bindingcollectionadapter",
             "bindingcollectionadapter-viewpager2"  : "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-viewpager2:$Version.bindingcollectionadapter",
+            "photoview"                            : "com.github.chrisbanes:PhotoView:2.0.0",
+            "xpopup"                               : 'com.lxj:xpopup:2.2.13',
     ]
 
     ViewDeps = ViewLibs.values()
@@ -70,7 +73,14 @@ ext {
     ]
 
     RoomLibs = [
+            "room"         : "androidx.room:room-ktx:${Version['room']}",
+            "room-compiler": "androidx.room:room-compiler:${Version['room']}",
+            "room-test"    : "androidx.room:room-testing",
+    ]
 
+    PagingLibs = [
+            "paging"     : "androidx.paging:paging-runtime-ktx:${Version['paging']}",
+            "paging-test": "androidx.paging:paging-common-ktx:${Version['paging']}",
     ]
 
     NetLibs = [

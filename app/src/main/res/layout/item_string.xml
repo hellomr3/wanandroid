@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.looptry.wanandroid.ui.rv.item.StringItem" />
+    </data>
+
+    <TextView
+        cornersBottomLeftRadius="@{item.bottomLeftRadius}"
+        cornersBottomRightRadius="@{item.bottomRightRadius}"
+        cornersTopLeftRadius="@{item.topLeftRadius}"
+        cornersTopRightRadius="@{item.topRightRadius}"
+        solidColor="@{@color/colorWhite}"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="bottom"
+        android:paddingStart="6dp"
+        android:paddingBottom="12dp"
+        android:text="@{item.title}"
+        tools:text="行政" />
+</layout>

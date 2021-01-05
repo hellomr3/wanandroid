@@ -15,6 +15,7 @@
         android:background="@color/colorMain">
 
         <ImageView
+            android:id="@+id/igv"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:padding="12dp"

@@ -1,5 +1,7 @@
 package com.looptry.wanandroid
 
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
 import org.junit.Test
 
 /**
@@ -14,12 +16,8 @@ class FlowTest {
 
     @Test
     fun doIt() {
-        "".toByteArray()
+
     }
 
 
-    data class A(
-        val name: String,
-        val name2: String
-    )
 }

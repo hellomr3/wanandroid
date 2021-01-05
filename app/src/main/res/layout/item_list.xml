@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.looptry.wanandroid.ui.rv.item.ListItem" />
+    </data>
+
+    <TextView
+        cornersRadius="8f"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorWhite"
+        android:drawableStart="@{item.icon}"
+        android:drawableEnd="@{item.icon}"
+        android:drawablePadding="12dp"
+        android:gravity="center_vertical"
+        android:paddingStart="@dimen/padding16"
+        android:paddingEnd="8dp"
+        android:text="@{item.title}"
+        tools:drawableEnd="@drawable/ic_more"
+        tools:drawableStart="@drawable/ic_camera"
+        tools:text="审批信息列表" />
+</layout>

@@ -32,6 +32,38 @@ suspend fun CoroutineContext.launchWithExceptionHandler(
     }
 }
 
+fun ViewModel.launchAsync(
+    context: CoroutineContext = Dispatchers.Main,
+    onStart: (() -> Unit)? = null,
+    onFailure: ((Throwable) -> Unit)? = null,
+    onFinished: (() -> Unit)? = null,
+    block: suspend CoroutineScope.() -> Unit
+) {
+    //监督异常
+    val handler = CoroutineExceptionHandler { _, throwable ->
+        onFailure?.invoke(throwable)
+    }
+    this.viewModelScope.launch(context + handler) {
+        try {
+            onStart?.invoke()
+            block.invoke(this)
+        } catch (e: Throwable) {
+            if (e is CancellationException) {
+                //doNothing
+                "CancellationException".logE()
+            } else {
+                onFailure?.invoke(e)
+            }
+        } finally {
+            try {
+                onFinished?.invoke()
+            } catch (e: Throwable) {
+                //doNothing
+            }
+        }
+    }
+}
+
 /**
  * 处理请求中的异常
  */

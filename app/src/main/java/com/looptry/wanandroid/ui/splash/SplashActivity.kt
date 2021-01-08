@@ -16,6 +16,7 @@ import com.looptry.wanandroid.ui.repeat.RepeatActivity
 import com.looptry.wanandroid.ui.room_test.RoomTestActivity
 import com.looptry.wanandroid.ui.rv.RVActivity
 import com.looptry.wanandroid.ui.test.userInfoDataStore
+import com.looptry.wanandroid.ui.water.WaterActivity
 import com.looptry.wanandroid.widget.activity.BaseActivity
 import com.looptry.wanandroid.widget.dialog.ImageViewer
 import com.looptry.wanandroid.widget.service.TimedTaskService
@@ -59,7 +60,7 @@ class SplashActivity : BaseActivity() {
 
 
     private fun toNextPage() {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, WaterActivity::class.java)
         startActivity(intent)
         finish()
     }

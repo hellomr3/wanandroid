@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.looptry.wanandroid.ui.water.WaterViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/selectVideo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="源视频" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/selectImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="源图片" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/createWaterImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="创建水印图片" />
+
+        <ImageView
+            android:id="@+id/waterImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/createTempFile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="创建转换视频" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="开始操作" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/createWaterTransImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="创建转换水印图片" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/startWaterImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="合成水印" />
+    </LinearLayout>
+</layout>

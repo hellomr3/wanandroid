@@ -6,10 +6,10 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.looptry.architecture.request.doOnFailure
 import com.looptry.architecture.request.doOnSuccess
-import com.looptry.protobuf.entity.message
 import com.looptry.wanandroid.BR
 import com.looptry.wanandroid.R
 import com.looptry.wanandroid.app.LoginManager
+import com.looptry.wanandroid.ext.launchAsync
 import com.looptry.wanandroid.ext.launchAsyncRequest
 import com.looptry.wanandroid.ext.showToast
 import com.looptry.wanandroid.model.entity.article.ShareArticle
@@ -18,15 +18,12 @@ import com.looptry.wanandroid.model.mapper.ShareArticle2ShareArticleItem
 import com.looptry.wanandroid.model.view.ShareArticleItem
 import com.looptry.wanandroid.repository.IRequest
 import dagger.hilt.android.qualifiers.ActivityContext
-import dagger.hilt.android.qualifiers.ApplicationContext
-import kotlinx.coroutines.cancel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import me.tatarka.bindingcollectionadapter2.ItemBinding
+import kotlinx.coroutines.withContext
 import me.tatarka.bindingcollectionadapter2.OnItemBind
 import me.tatarka.bindingcollectionadapter2.collections.DiffObservableList
-import me.tatarka.bindingcollectionadapter2.itembindings.ItemBindingModel
-import me.tatarka.bindingcollectionadapter2.itembindings.OnItemBindModel
 
 /**
  * Author: mr.3
@@ -82,6 +79,17 @@ class HomeViewModel @ViewModelInject constructor(
                 toCollection(item)
             })
 
+    }
+
+    fun test() = launchAsync{
+        delay(1000)
+        launch {
+            throw Throwable("cc")
+        }
+        withContext(Dispatchers.Default) {
+            delay(10)
+            throw Throwable("abc")
+        }
     }
 
     //获取Banner

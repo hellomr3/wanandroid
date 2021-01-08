@@ -86,6 +86,7 @@ class HomeFragment : BaseFragment() {
         viewModel.getBannerList()
         viewModel.getTopArticleList()
         viewModel.getArticleList(showLoading = true, 0)
+        viewModel.test()
     }
 
     inner class ClickProxy : OnRefreshListener, OnLoadMoreListener {

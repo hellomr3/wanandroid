@@ -29,7 +29,6 @@ class App : BasicApplication() {
         super.onCreate()
         //初始化Utils
         Utils.init(this)
-
         RxFFmpegInvoke.getInstance().setDebug(true)
     }
 

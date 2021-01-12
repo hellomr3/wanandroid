@@ -109,6 +109,14 @@ class WaterActivity : BaseActivity() {
             }
         }
 
+        binding.split.setOnClickListener {
+            //check
+            val srcVideo = viewModel.srcVideo.value ?: return@setOnClickListener
+            lifecycleScope.launch {
+                WaterUtils.splitByTime(srcVideo, 10 * 60 * 1000)
+            }
+        }
+
         binding.createWaterTransImage.setOnClickListener {
             val file = File(
                 "/storage/emulated/0/Pictures",
@@ -128,6 +136,7 @@ class WaterActivity : BaseActivity() {
             val tempFile = viewModel.transImageFile.value ?: return@setOnClickListener
             lifecycleScope.launch {
                 WaterUtils.waterImage(srcImage, srcWater, tempFile)
+                "dd:$tempFile".logE()
             }
         }
     }

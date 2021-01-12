@@ -19,11 +19,6 @@
             android:layout_height="wrap_content"
             android:text="源视频" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/selectImage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="源图片" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/createWaterImage"
@@ -46,8 +41,19 @@
             android:id="@+id/start"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="开始操作" />
+            android:text="合成视频水印" />
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/split"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="分割视频" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/selectImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="源图片" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/createWaterTransImage"

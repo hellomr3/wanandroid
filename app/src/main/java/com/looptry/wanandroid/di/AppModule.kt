@@ -1,8 +1,6 @@
 package com.looptry.wanandroid.di
 
-import com.looptry.wanandroid.app.LoginManager
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
 
@@ -17,8 +15,4 @@ import dagger.hilt.android.components.ApplicationComponent
 @Module
 object AppModule {
 
-    @Provides
-    fun provideLoginManager(): LoginManager {
-        return LoginManager()
-    }
 }

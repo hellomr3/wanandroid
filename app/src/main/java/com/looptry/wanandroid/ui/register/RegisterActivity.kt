@@ -3,6 +3,7 @@ package com.looptry.wanandroid.ui.register
 import android.content.Context
 import android.content.Intent
 import androidx.activity.viewModels
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.looptry.architecture.page.DataBindingConfig
 import com.looptry.wanandroid.R
 import com.looptry.wanandroid.ext.getStringRes
@@ -17,6 +18,7 @@ import me.tatarka.bindingcollectionadapter2.BR
  * Modify By:
  * Modify Date:
  */
+@Route(path = "/app/Register")
 class RegisterActivity : BaseActivity() {
     companion object {
         fun navigation(context: Context) {

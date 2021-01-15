@@ -1,13 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
+        <variable
+            name="vm"
+            type="com.looptry.wanandroid.ui.mine.MineViewModel" />
+
+        <variable
+            name="click"
+            type="com.looptry.wanandroid.ui.mine.MineFragment.ClickProxy" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <androidx.constraintlayout.utils.widget.ImageFilterView
+            android:id="@+id/avatar"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="@dimen/margin16"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:roundPercent="1"
+            tools:src="@tools:sample/avatars" />
+
+        <com.looptry.library.view.BlockButton
+            android:id="@+id/btnCollect"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:background="@color/colorMain"
+            android:onClick="@{()->click.toCollectList()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/avatar"
+            app:leadTitle="@string/mine_collect"
+            app:separatorLineColor="@color/colorPrimaryDark"
+            app:showSeparatorLine="visible"
+            app:tailIcon="@drawable/common_ic_more"
+            app:titleTextColor="@color/colorWhite"
+            app:titleTextSize="@dimen/text12" />
+
+        <com.looptry.library.view.BlockButton
+            android:id="@+id/btnScoreRank"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/colorMain"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnCollect"
+            app:leadTitle="@string/mine_scoreRank"
+            app:tailIcon="@drawable/common_ic_more"
+            app:titleTextColor="@color/colorWhite"
+            app:titleTextSize="@dimen/text12" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

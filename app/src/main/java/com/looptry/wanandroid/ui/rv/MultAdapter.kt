@@ -2,10 +2,8 @@ package com.looptry.wanandroid.ui.rv
 
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.looptry.wanandroid.ui.rv.decoration.SpaceDecoration
 import com.looptry.wanandroid.ui.rv.item.GridItem
 import com.looptry.wanandroid.ui.rv.item.ListItem
-import kotlinx.android.synthetic.main.activity_rv.*
 import me.tatarka.bindingcollectionadapter2.BindingRecyclerViewAdapter
 
 /**

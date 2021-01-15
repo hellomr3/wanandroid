@@ -19,7 +19,4 @@ interface IRequest {
 
     suspend fun getArticleList(page: Int): Result<PageResp<ShareArticle>>
 
-    suspend fun login(username: String, password: String): Result<Any>
-
-    suspend fun register(username: String, password: String, repassword: String): Result<Any>
 }

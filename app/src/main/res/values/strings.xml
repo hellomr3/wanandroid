@@ -13,6 +13,11 @@
     <!--home-->
     <string name="home_top">置顶</string>
     <string name="home_fresh">新</string>
+    <string name="home_collectSuccess">收藏成功</string>
+    <string name="home_uncollectSuccess">取消收藏成功</string>
+    <!--mine-->
+    <string name="mine_collect">我的收藏</string>
+    <string name="mine_scoreRank">积分排行</string>
     <!--login-->
     <string name="login_username">用户名</string>
     <string name="login_username_hint">请输入用户名</string>

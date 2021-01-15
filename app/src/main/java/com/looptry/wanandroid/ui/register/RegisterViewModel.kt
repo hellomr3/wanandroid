@@ -9,7 +9,7 @@ import com.looptry.wanandroid.R
 import com.looptry.wanandroid.ext.getStringRes
 import com.looptry.wanandroid.ext.launchAsyncRequest
 import com.looptry.wanandroid.ext.showToast
-import com.looptry.wanandroid.repository.IRequest
+import com.looptry.wanandroid.repository.IUser
 
 /**
  * Author: mr.3
@@ -19,7 +19,7 @@ import com.looptry.wanandroid.repository.IRequest
  * Modify Date:
  */
 class RegisterViewModel @ViewModelInject constructor(
-    val repository: IRequest
+    val repository: IUser
 ) : ViewModel() {
 
     val inputUserName = MutableLiveData<String>()

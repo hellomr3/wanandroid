@@ -3,7 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
-    id 'kotlin-android-extensions'
+    id 'kotlin-parcelize'
 }
 apply from: rootProject.file("common.gradle")
 
@@ -40,10 +40,22 @@ android {
         dataBinding = true
     }
 
+    //ARouter
+    kapt {
+        arguments {
+            arg("AROUTER_MODULE_NAME", project.getName())
+            arg("AROUTER_GENERATE_DOC", "enable")
+        }
+    }
     packagingOptions {
         pickFirst("META-INF/atomicfu.kotlin_module")
         exclude('META-INF/*')
         exclude("classes.dex")
+    }
+    sourceSets {
+        main {
+
+        }
     }
 }
 
@@ -74,19 +86,21 @@ dependencies {
     //paging
     implementation rootProject.ext.PagingLibs['paging']
     testImplementation rootProject.ext.PagingLibs['paging-test']
-
     //完整版
     implementation 'com.github.microshow:RxFFmpeg:4.9.0'
     implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.6.0'
     //GSYPlayer
     implementation 'com.shuyu:gsyVideoPlayer-java:8.0.0'
-    implementation 'com.shuyu:gsyVideoPlayer-armv7a:8.0.0'
-
+    //是否需要ExoPlayer模式
+    implementation 'com.shuyu:GSYVideoPlayer-exo2:8.0.0'
+    //更多ijk的编码支持
+    implementation 'com.shuyu:gsyVideoPlayer-ex_so:8.0.0'
     //SocketProcess
     implementation "com.looptry.arch:annotation:1.0.0"
     kapt "com.looptry.arch:socketprocess:1.0.0"
-    //DataStore
-    implementation "androidx.datastore:datastore:1.0.0-alpha04"
+    //ARouter
+    implementation rootProject.ext.KaptLibs['arouter']
+    kapt rootProject.ext.KaptLibs['arouter_compiler']
     //test
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

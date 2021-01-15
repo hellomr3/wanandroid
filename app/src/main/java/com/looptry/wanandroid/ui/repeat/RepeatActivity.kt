@@ -2,7 +2,6 @@ package com.looptry.wanandroid.ui.repeat
 
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.looptry.architecture.BR
 import com.looptry.architecture.page.DataBindingConfig
 import com.looptry.wanandroid.R

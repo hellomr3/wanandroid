@@ -1,6 +1,7 @@
 package com.looptry.wanandroid.di
 
 import com.looptry.wanandroid.repository.IRequest
+import com.looptry.wanandroid.repository.IUser
 import com.looptry.wanandroid.repository.Repository
 import dagger.Binds
 import dagger.Module
@@ -23,4 +24,10 @@ abstract class ApiModule {
     abstract fun bindIRequest(
         impl: Repository
     ): IRequest
+
+    @Binds
+    @Singleton
+    abstract fun bindIUser(
+        impl: Repository
+    ): IUser
 }

@@ -2,18 +2,16 @@ package com.looptry.wanandroid.ui.home
 
 import android.os.Bundle
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.GridLayoutManager
 import com.looptry.architecture.page.DataBindingConfig
 import com.looptry.wanandroid.BR
 import com.looptry.wanandroid.R
+import com.looptry.wanandroid.databinding.FragmentHomeBinding
 import com.looptry.wanandroid.widget.fragment.BaseFragment
 import com.scwang.smart.refresh.layout.api.RefreshLayout
 import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_home.*
 
 /**
  * Author: mr.3
@@ -36,6 +34,10 @@ class HomeFragment : BaseFragment() {
 
     private val viewModel by viewModels<HomeViewModel>()
 
+    private val binding by lazy {
+        mBinding as FragmentHomeBinding
+    }
+
     private val bannerAdapter by lazy {
         HomeBannerAdapter()
     }
@@ -50,7 +52,7 @@ class HomeFragment : BaseFragment() {
         viewModel.banners.observe(this) {
             if (it.isEmpty()) return@observe
             bannerAdapter.setDatas(it)
-            banner.start()
+            bannerAdapter.notifyDataSetChanged()
         }
 
         viewModel.shareArticle.observe(this) {
@@ -62,20 +64,20 @@ class HomeFragment : BaseFragment() {
     override fun initView() {
         super.initView()
         //banner
-        banner.addBannerLifecycleObserver(this)
+        binding.banner.addBannerLifecycleObserver(this)
             .setAdapter(bannerAdapter)
 //            .setBannerGalleryEffect(20,20,0,0.8f)
             .setBannerGalleryMZ(10, 1f)
 
-        homeRv.addItemDecoration(
+        binding.homeRv.addItemDecoration(
             DividerItemDecoration(
                 this.context,
                 DividerItemDecoration.VERTICAL
             )
         )
         //关闭RecyclerView动画效果
-        homeRv.itemAnimator?.changeDuration = 0
-        homeRv.itemAnimator?.removeDuration = 0
+        binding.homeRv.itemAnimator?.changeDuration = 0
+        binding.homeRv.itemAnimator?.removeDuration = 0
 
 //        homeRv.layoutManager = GridLayoutManager(this.context,4)
 
@@ -86,7 +88,6 @@ class HomeFragment : BaseFragment() {
         viewModel.getBannerList()
         viewModel.getTopArticleList()
         viewModel.getArticleList(showLoading = true, 0)
-        viewModel.test()
     }
 
     inner class ClickProxy : OnRefreshListener, OnLoadMoreListener {
@@ -97,7 +98,7 @@ class HomeFragment : BaseFragment() {
         }
 
         override fun onLoadMore(refreshLayout: RefreshLayout) {
-            val page = viewModel.nextPage.value!!
+            val page = viewModel.pageNo + 1
             viewModel.getArticleList(page = page)
         }
     }

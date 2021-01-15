@@ -1,18 +1,15 @@
 package com.looptry.wanandroid.di
 
-import com.blankj.utilcode.util.GsonUtils
-import com.google.gson.GsonBuilder
-import com.looptry.architecture.net.gson.GsonTypeAdapterFactory
-import com.looptry.wanandroid.config.NetConfig
+import com.looptry.wanandroid.config.Config
 import com.looptry.wanandroid.net.RequestApi
 import com.looptry.wanandroid.net.UserApi
 import com.looptry.wanandroid.net.intercept.LogIntercept
+import com.looptry.wanandroid.net.okhttp.MyCookieJar
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
 import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
@@ -33,6 +30,7 @@ object NetworkModule {
     fun provideNoAuthClient(): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(LogIntercept.getHttpLogInterceptor())
+            .cookieJar(MyCookieJar.instance!!)
             .build()
     }
 
@@ -41,6 +39,7 @@ object NetworkModule {
     fun provideAuthClient(): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(LogIntercept.getHttpLogInterceptor())
+            .cookieJar(MyCookieJar.instance!!)
             .build()
     }
 
@@ -50,7 +49,7 @@ object NetworkModule {
         @NoAuthClient client: OkHttpClient
     ): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(NetConfig.HTTP_URL)
+            .baseUrl(Config.HTTP_URL)
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .addConverterFactory(ScalarsConverterFactory.create())
@@ -64,7 +63,7 @@ object NetworkModule {
     ): Retrofit {
 
         return Retrofit.Builder()
-            .baseUrl(NetConfig.HTTP_URL)
+            .baseUrl(Config.HTTP_URL)
             .addConverterFactory(
                 GsonConverterFactory.create(
 //                    GsonBuilder().registerTypeAdapterFactory(

@@ -15,4 +15,6 @@ import com.looptry.architecture.livedata.EventMutableLiveData
 class ShareViewModel : ViewModel() {
 
     val showLoading = EventMutableLiveData(false.toEvent())
+
+    val finish = EventMutableLiveData<Boolean>()
 }

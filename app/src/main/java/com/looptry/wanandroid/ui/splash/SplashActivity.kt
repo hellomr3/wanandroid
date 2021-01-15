@@ -3,30 +3,20 @@ package com.looptry.wanandroid.ui.splash
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.datastore.core.DataStore
-import androidx.lifecycle.lifecycleScope
+import com.alibaba.android.arouter.facade.Postcard
+import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.android.arouter.facade.callback.NavigationCallback
+import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.constant.PermissionConstants
-import com.blankj.utilcode.util.PermissionUtils
+import com.looptry.architecture.livedata.observeEvent
 import com.looptry.architecture.page.DataBindingConfig
 import com.looptry.wanandroid.BR
 import com.looptry.wanandroid.R
+import com.looptry.wanandroid.ext.logE
 import com.looptry.wanandroid.ext.requestPermission
-import com.looptry.wanandroid.ui.main.MainActivity
-import com.looptry.wanandroid.ui.repeat.RepeatActivity
-import com.looptry.wanandroid.ui.room_test.RoomTestActivity
-import com.looptry.wanandroid.ui.rv.RVActivity
-import com.looptry.wanandroid.ui.test.userInfoDataStore
 import com.looptry.wanandroid.ui.water.WaterActivity
 import com.looptry.wanandroid.widget.activity.BaseActivity
-import com.looptry.wanandroid.widget.dialog.ImageViewer
 import com.looptry.wanandroid.widget.service.TimedTaskService
-import com.lxj.xpopup.XPopup
-import kotlinx.android.synthetic.main.activity_splash.*
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.runBlocking
-import java.util.prefs.Preferences
 
 /**
  * Author: mr.3
@@ -35,6 +25,7 @@ import java.util.prefs.Preferences
  * Modify By:
  * Modify Date:
  */
+@Route(path = "/app/Splash")
 class SplashActivity : BaseActivity() {
 
     private val viewModel by viewModels<SplashViewModel>()
@@ -50,18 +41,25 @@ class SplashActivity : BaseActivity() {
 
     }
 
+    override fun initObserver() {
+        super.initObserver()
+        viewModel.nav.observeEvent(this) {
+            toNextPage()
+        }
+    }
+
     override fun onResume() {
         super.onResume()
         requestPermission(PermissionConstants.STORAGE, onDenied = {}, onGrantedOrSuccess = {
-            Thread.sleep(100)
-            toNextPage()
+            viewModel.tryLogin()
         })
     }
 
 
     private fun toNextPage() {
-        val intent = Intent(this, WaterActivity::class.java)
-        startActivity(intent)
+        ARouter.getInstance()
+            .build("/app/Main")
+            .navigation()
         finish()
     }
 

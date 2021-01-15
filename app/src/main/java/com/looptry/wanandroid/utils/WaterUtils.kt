@@ -1,6 +1,5 @@
 package com.looptry.wanandroid.utils
 
-import com.blankj.utilcode.util.PathUtils
 import com.blankj.utilcode.util.TimeUtils
 import com.looptry.wanandroid.ext.logE
 import io.microshow.rxffmpeg.RxFFmpegCommandList
@@ -8,9 +7,6 @@ import io.microshow.rxffmpeg.RxFFmpegInvoke
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.File
-import java.net.URI
-import java.nio.file.Path
-import java.nio.file.Paths
 
 /**
  * Author: mr.3
@@ -72,7 +68,6 @@ object WaterUtils {
             //无需分割
             return
         }
-
         var start = 0L
         var part = 0
         while (start < duration) {
@@ -94,36 +89,30 @@ object WaterUtils {
         start: Long,
         interval: Long,
         part: Int
-    ) =
-        withContext(Dispatchers.Default) {
-            val startFormat = TimeUtils.millis2String(start, "00:mm:ss")
-            val endFormat = TimeUtils.millis2String(interval, "00:mm:ss")
-            val src = File(videoPath)
-            val dst = File(
-                src.parent,
-                "${
-                    TimeUtils.millis2String(
-                        System.currentTimeMillis(),
-                        "YYMMDD_HHmmss"
-                    )
-                }_part$part.mp4"
-            )
-            "$startFormat,$endFormat".logE()
-            //命令
-            val commandList = RxFFmpegCommandList()
-                .append("-i")
-                .append(videoPath)
-                .append("-ss")
-                .append(startFormat)
-                //-to s——e
-                //-t s+e
-                .append("-t")
-                .append(endFormat)
-                .append("-c")
-                .append("copy")
-                .append(dst.absolutePath)
-            //同步执行
-            RxFFmpegInvoke.getInstance().runCommand(commandList.build(), null)
-            "file src:${dst.absolutePath}".logE()
-        }
+    ) = withContext(Dispatchers.Default) {
+        val startFormat = TimeUtils.millis2String(start, "00:mm:ss")
+        val endFormat = TimeUtils.millis2String(interval, "00:mm:ss")
+        val src = File(videoPath)
+        val srcName = src.name.split(".")[0]
+        val dst = File(
+            src.parent,
+            "${srcName}_part$part.mp4"
+        )
+        //命令
+        val commandList = RxFFmpegCommandList()
+            .append("-i")
+            .append(videoPath)
+            .append("-ss")
+            .append(startFormat)
+            //-to s——e
+            //-t s+e
+            .append("-t")
+            .append(endFormat)
+            .append("-c")
+            .append("copy")
+            .append(dst.absolutePath)
+        //同步执行
+        RxFFmpegInvoke.getInstance().runCommand(commandList.build(), null)
+        "file src:${dst.absolutePath}".logE()
+    }
 }

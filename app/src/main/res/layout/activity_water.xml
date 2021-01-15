@@ -66,5 +66,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="合成水印" />
+
+        <com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
+            android:id="@+id/player"
+            android:layout_width="match_parent"
+            android:layout_height="100dp" />
     </LinearLayout>
 </layout>

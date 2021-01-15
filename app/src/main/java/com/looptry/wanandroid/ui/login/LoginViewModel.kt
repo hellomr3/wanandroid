@@ -8,14 +8,17 @@ import androidx.core.text.toSpannable
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.looptry.architecture.ext.toEvent
 import com.looptry.architecture.request.doOnFailure
 import com.looptry.architecture.request.doOnSuccess
 import com.looptry.wanandroid.R
 import com.looptry.wanandroid.ext.*
 import com.looptry.wanandroid.net.UserApi
 import com.looptry.wanandroid.repository.IRequest
+import com.looptry.wanandroid.repository.IUser
 import com.looptry.wanandroid.repository.Repository
 import com.looptry.wanandroid.ui.register.RegisterActivity
+import com.looptry.wanandroid.widget.viewmodel.ShareViewModel
 import dagger.hilt.android.qualifiers.ActivityContext
 
 /**
@@ -27,7 +30,8 @@ import dagger.hilt.android.qualifiers.ActivityContext
  */
 class LoginViewModel @ViewModelInject constructor(
     @ActivityContext private val context: Context,
-    private val repository: IRequest,
+    private val repository: IUser,
+    private val share: ShareViewModel
 ) : ViewModel() {
 
     val inputUserName = MutableLiveData<String>()
@@ -49,6 +53,7 @@ class LoginViewModel @ViewModelInject constructor(
         val result = repository.login(username, password)
         result.doOnSuccess {
             getStringRes(R.string.login_success).showToast()
+            share.finish.value = true.toEvent()
         }
         result.doOnFailure {
             it.showToast()

@@ -8,6 +8,7 @@ import com.blankj.utilcode.constant.PermissionConstants
 import com.blankj.utilcode.util.FileUtils
 import com.blankj.utilcode.util.ImageUtils
 import com.blankj.utilcode.util.PermissionUtils
+import com.blankj.utilcode.util.UriUtils
 import com.looptry.architecture.BR
 import com.looptry.architecture.page.DataBindingConfig
 import com.looptry.wanandroid.R
@@ -19,8 +20,13 @@ import com.looptry.wanandroid.widget.activity.BaseActivity
 import com.luck.picture.lib.PictureSelector
 import com.luck.picture.lib.config.PictureConfig
 import com.luck.picture.lib.config.PictureMimeType
+import com.shuyu.gsyvideoplayer.GSYVideoManager
+import com.shuyu.gsyvideoplayer.model.VideoOptionModel
+import io.microshow.rxffmpeg.RxFFmpegInvoke
 import kotlinx.coroutines.launch
+import tv.danmaku.ijk.media.player.IjkMediaPlayer
 import java.io.File
+
 
 /**
  * Author: mr.3
@@ -34,6 +40,8 @@ class WaterActivity : BaseActivity() {
     companion object {
         const val SRC_VIDEO = 1001
         const val SRC_IMAGE = 1002
+        const val TRAN_DEMO_PATH =
+            "/storage/emulated/0/HuNanShinyP/VideoRecords/43050001981328000162_20210113103228"
     }
 
     private val viewModel by viewModels<WaterViewModel>()
@@ -111,10 +119,21 @@ class WaterActivity : BaseActivity() {
 
         binding.split.setOnClickListener {
             //check
-            val srcVideo = viewModel.srcVideo.value ?: return@setOnClickListener
-            lifecycleScope.launch {
-                WaterUtils.splitByTime(srcVideo, 10 * 60 * 1000)
-            }
+//            val srcVideo = viewModel.srcVideo.value ?: return@setOnClickListener
+            val srcVideo =
+                "/storage/emulated/0/HuNanShinyP/VideoRecords/43050001981328000162_20210113103228"
+            val uri = UriUtils.file2Uri(File(srcVideo))
+            val file = UriUtils.uri2File(uri)
+            "uri:${uri},file:${file.absolutePath}".logE()
+            RxFFmpegInvoke.getInstance().getMediaInfo(file.absolutePath)
+                .also {
+                    "info:$it".logE()
+                }
+//            val uri = UriUtils.file2Uri(File(srcVideo)).toString()
+//            "uri:$uri".logE()
+//            lifecycleScope.launch {
+//                WaterUtils.splitByTime(srcVideo, 10 * 1000)
+//            }
         }
 
         binding.createWaterTransImage.setOnClickListener {

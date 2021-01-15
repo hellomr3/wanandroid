@@ -2,6 +2,7 @@ package com.looptry.wanandroid.ext
 
 import com.looptry.architecture.request.Result
 import com.looptry.wanandroid.R
+import com.looptry.wanandroid.app.LoginManager
 import com.looptry.wanandroid.model.entity.ApiResult
 
 /**
@@ -22,6 +23,7 @@ fun <T> ApiResult<T>.handleResult(): Result<T> {
             Result.OK(this.data)
         }
         code == -1001 -> {
+            LoginManager.toLogin()
             Result.Failure(getStringRes(R.string.request_loginExpired))
         }
         code < 0 -> {

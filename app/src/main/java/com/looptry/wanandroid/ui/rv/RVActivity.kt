@@ -4,9 +4,10 @@ import androidx.activity.viewModels
 import com.looptry.architecture.page.DataBindingConfig
 import com.looptry.wanandroid.BR
 import com.looptry.wanandroid.R
+import com.looptry.wanandroid.databinding.ActivityRvBinding
 import com.looptry.wanandroid.ui.rv.decoration.SpaceDecoration
 import com.looptry.wanandroid.widget.activity.BaseActivity
-import kotlinx.android.synthetic.main.activity_rv.*
+
 
 /**
  * Author: mr.3
@@ -19,6 +20,10 @@ class RVActivity : BaseActivity() {
 
     private val viewModel by viewModels<RVViewModel>()
 
+    private val binding by lazy {
+        mBinding as ActivityRvBinding
+    }
+
     override fun getDataBindingConfig(): DataBindingConfig {
         return DataBindingConfig(BR.vm, R.layout.activity_rv, viewModel)
     }
@@ -26,7 +31,7 @@ class RVActivity : BaseActivity() {
     override fun initObserver() {
         super.initObserver()
         viewModel.notify.observe(this) {
-            rv.addItemDecoration(SpaceDecoration())
+            binding.rv.addItemDecoration(SpaceDecoration())
         }
     }
 

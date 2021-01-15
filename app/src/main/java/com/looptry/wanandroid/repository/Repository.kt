@@ -4,6 +4,7 @@ import com.looptry.architecture.request.Result
 import com.looptry.architecture.request.doOnException
 import com.looptry.architecture.request.doOnFailure
 import com.looptry.architecture.request.doOnSuccess
+import com.looptry.wanandroid.app.LoginManager
 import com.looptry.wanandroid.ext.encryptMd5
 import com.looptry.wanandroid.ext.handleResult
 import com.looptry.wanandroid.ext.logE
@@ -29,7 +30,7 @@ import kotlin.coroutines.CoroutineContext
 class Repository @Inject constructor(
     private val api: RequestApi,
     private val userApi: UserApi
-) : IRequest {
+) : IRequest, IUser {
     private val TAG = this::class.java.simpleName
 
     /**
@@ -92,8 +93,13 @@ class Repository @Inject constructor(
 
     override suspend fun login(username: String, password: String): Result<Any> {
         return invokeRequest {
-            val resp = userApi.login(username, password.encryptMd5())
+            val resp = userApi.login(username, password)
                 .handleResult()
+                .also {
+                    it.doOnSuccess {
+                        LoginManager.saveLocalInfo(username, password)
+                    }
+                }
             resp
         }
     }
@@ -105,6 +111,46 @@ class Repository @Inject constructor(
     ): Result<Any> {
         return invokeRequest {
             val resp = userApi.register(username, password.encryptMd5(), repassword.encryptMd5())
+                .handleResult()
+            resp
+        }
+    }
+
+    override suspend fun collectInner(id: Int): Result<Any> {
+        return invokeRequest {
+            val resp = userApi.collectionInner(id)
+                .handleResult()
+            resp
+        }
+    }
+
+    override suspend fun collectOut(title: String, author: String, link: String): Result<Any> {
+        return invokeRequest {
+            val resp = userApi.collectOut(title, author, link)
+                .handleResult()
+            resp
+        }
+    }
+
+    override suspend fun cancelArticle(id: Int): Result<Any> {
+        return invokeRequest {
+            val resp = userApi.uncollectFromArticleList(id)
+                .handleResult()
+            resp
+        }
+    }
+
+    override suspend fun cancelCollect(id: Int, originId: String): Result<Any> {
+        return invokeRequest {
+            val resp = userApi.uncollectFromCollectList(id, originId)
+                .handleResult()
+            resp
+        }
+    }
+
+    override suspend fun getCollectList(pageNo: Int): Result<PageResp<ShareArticle>> {
+        return invokeRequest {
+            val resp = userApi.getCollectList(pageNo)
                 .handleResult()
             resp
         }

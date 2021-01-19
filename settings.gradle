@@ -1,5 +1,4 @@
 include ':db'
-include ':recyclerview'
 include ':protobuf'
 include ':app'
 rootProject.name = "wanandroid"

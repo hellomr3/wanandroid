@@ -44,18 +44,13 @@ android {
     kapt {
         arguments {
             arg("AROUTER_MODULE_NAME", project.getName())
-            arg("AROUTER_GENERATE_DOC", "enable")
+//            arg("AROUTER_GENERATE_DOC", "enable")
         }
     }
     packagingOptions {
         pickFirst("META-INF/atomicfu.kotlin_module")
         exclude('META-INF/*')
         exclude("classes.dex")
-    }
-    sourceSets {
-        main {
-
-        }
     }
 }
 
@@ -96,8 +91,8 @@ dependencies {
     //更多ijk的编码支持
     implementation 'com.shuyu:gsyVideoPlayer-ex_so:8.0.0'
     //SocketProcess
-    implementation "com.looptry.arch:annotation:1.0.0"
-    kapt "com.looptry.arch:socketprocess:1.0.0"
+//    implementation "com.looptry.arch:annotation:1.0.0"
+//    kapt "com.looptry.arch:socketprocess:1.0.0"
     //ARouter
     implementation rootProject.ext.KaptLibs['arouter']
     kapt rootProject.ext.KaptLibs['arouter_compiler']

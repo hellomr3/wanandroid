@@ -1,14 +1,12 @@
 package com.looptry.wanandroid
 
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
-import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
-
+import com.looptry.wanandroid.ui.qa.QAViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.runBlocking
+import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-
-import org.junit.Assert.*
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -17,10 +15,16 @@ import org.junit.Assert.*
  */
 @RunWith(AndroidJUnit4::class)
 class ExampleInstrumentedTest2 {
+
+    lateinit var qaViewModel: QAViewModel
+
+    @Before
+    fun createRepository() {
+        qaViewModel = QAViewModel()
+    }
+
     @Test
-    fun useAppContext() {
-        // Context of the app under test.
-        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.looptry.wanandroid", appContext.packageName)
+    fun useAppContext() = runBlocking(Dispatchers.Main){
+
     }
 }

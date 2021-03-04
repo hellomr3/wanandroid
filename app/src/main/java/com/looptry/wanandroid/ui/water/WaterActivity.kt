@@ -35,6 +35,7 @@ import java.io.File
  * Modify By:
  * Modify Date:
  */
+
 class WaterActivity : BaseActivity() {
 
     companion object {
@@ -44,6 +45,7 @@ class WaterActivity : BaseActivity() {
             "/storage/emulated/0/HuNanShinyP/VideoRecords/43050001981328000162_20210113103228"
     }
 
+    
     private val viewModel by viewModels<WaterViewModel>()
 
     private val binding by lazy {

@@ -26,7 +26,7 @@ class App : BasicApplication() {
         super.onCreate()
         //初始化Utils
         Utils.init(this)
-        RxFFmpegInvoke.getInstance().setDebug(true)
+//        RxFFmpegInvoke.getInstance().setDebug(true)
         //ARouter
         if (BuildConfig.DEBUG) {
             ARouter.openLog()

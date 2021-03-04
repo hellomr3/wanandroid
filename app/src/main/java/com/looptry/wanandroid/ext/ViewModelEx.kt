@@ -104,6 +104,7 @@ private fun handleException(e: Throwable, onFinished: () -> Unit) {
 
         }
         else -> {
+            e.printStackTrace()
             "服务请求出错".showToast()
         }
     }

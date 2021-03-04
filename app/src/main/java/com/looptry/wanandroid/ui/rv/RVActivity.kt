@@ -1,6 +1,8 @@
 package com.looptry.wanandroid.ui.rv
 
+import android.view.View
 import androidx.activity.viewModels
+import androidx.recyclerview.widget.RecyclerView
 import com.looptry.architecture.page.DataBindingConfig
 import com.looptry.wanandroid.BR
 import com.looptry.wanandroid.R

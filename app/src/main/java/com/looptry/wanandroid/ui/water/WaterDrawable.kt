@@ -10,6 +10,7 @@ import com.looptry.wanandroid.ext.logE
 import com.looptry.wanandroid.ext.toPx
 import com.luck.picture.lib.tools.BitmapUtils
 import com.luck.picture.lib.tools.ScreenUtils
+import java.io.File
 
 /**
  * Author: mr.3
@@ -54,6 +55,7 @@ class WaterDrawable(
     }
 
     private fun scaleAvatar(r: Float) {
+        Bitmap.Config.ALPHA_8
         //横向
         val scale = if (originAvatar.width >= originAvatar.height) {
             r / originAvatar.height
@@ -62,6 +64,7 @@ class WaterDrawable(
         }
         val newWidth = originAvatar.width * scale
         val newHeight = originAvatar.height * scale
+
         avatar = originAvatar.scale(newWidth.toInt(), newHeight.toInt(), true)
     }
 

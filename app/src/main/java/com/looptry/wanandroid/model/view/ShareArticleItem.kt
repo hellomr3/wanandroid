@@ -63,4 +63,8 @@ data class ShareArticleItem(
     val collectionDrawable =
         collection.map { if (it) getDrawableRes(R.drawable.home_ic_liked) else getDrawableRes(R.drawable.home_ic_like) }
 
+    val tempDrawable by lazy {
+        getDrawableRes(R.drawable.bg_temp)
+    }
+
 }

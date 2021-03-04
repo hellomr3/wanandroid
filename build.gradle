@@ -3,6 +3,9 @@ apply plugin: 'com.alibaba.arouter'
 
 buildscript {
     apply from: rootProject.file("config.gradle")
+    ext {
+        rootProject.ext.Version['kotlinVersion'] = '1.4.21'
+    }
     repositories {
         mavenLocal()
         google()

@@ -124,5 +124,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/selection"
             tools:src="@drawable/home_ic_like" />
+
+        <ImageView
+            android:id="@+id/tempIgv"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            glideSrc="@{item.tempDrawable}"
+            app:layout_constraintBottom_toBottomOf="@id/likeBtn"
+            app:layout_constraintEnd_toStartOf="@id/likeBtn"
+            app:layout_constraintTop_toTopOf="@id/likeBtn" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

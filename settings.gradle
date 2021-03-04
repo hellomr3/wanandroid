@@ -1,3 +1,4 @@
+include ':ffmpeg'
 include ':db'
 include ':protobuf'
 include ':app'

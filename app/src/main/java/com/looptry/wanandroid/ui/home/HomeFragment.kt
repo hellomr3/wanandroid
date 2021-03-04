@@ -56,8 +56,7 @@ class HomeFragment : BaseFragment() {
         }
 
         viewModel.shareArticle.observe(this) {
-            val diffResult = viewModel.items.calculateDiff(it)
-            viewModel.items.update(it, diffResult)
+            viewModel.items.update(it)
         }
     }
 

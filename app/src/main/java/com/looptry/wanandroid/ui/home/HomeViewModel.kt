@@ -30,7 +30,6 @@ import me.tatarka.bindingcollectionadapter2.collections.DiffObservableList
  * Modify Date:
  */
 class HomeViewModel @ViewModelInject constructor(
-    @ActivityContext private val context: Context,
     private val repository: IRequest,
     private val userRepository: IUser,
 ) : ViewModel() {

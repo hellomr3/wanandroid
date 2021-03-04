@@ -72,6 +72,7 @@
         <activity android:name=".ui.register.RegisterActivity" />
         <activity android:name=".ui.water.WaterActivity" />
         <activity android:name=".ui.collection.CollectionListActivity" />
+        <activity android:name=".ui.addressbook.AddressBookActivity" />
     </application>
 
 </manifest>
